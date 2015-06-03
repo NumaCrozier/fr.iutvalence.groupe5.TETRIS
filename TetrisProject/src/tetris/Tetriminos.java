@@ -8,7 +8,8 @@ public class Tetriminos {
 	
 	private Box[] relativesBox;
 	
-	public Tetriminos(Types type, Position position) {
+	public Tetriminos(Types type, Position position) 
+	{
 		this.type=type;
 		switch (this.type){
 		case I:
@@ -57,5 +58,17 @@ public class Tetriminos {
 		break;
 		}
 	}
-
+	@Override
+	public String toString() {
+		switch (this.type)
+		{
+		case I : return "I";
+		case O : return "O";
+		case L : return "L";
+		case Z : return "Z";
+		case S : return "S";
+		case T : return "T";
+		default : return "Unknown";
+		}
+	}
 }

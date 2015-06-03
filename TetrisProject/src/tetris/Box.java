@@ -31,4 +31,9 @@ public class Box {
 		this.tetrimino = tetrimino;
 	}
 
+	@Override
+	public String toString() 
+	{
+		return "[ "+this.boxPosition+" ]"+"( "+this.state+" )"+"( "+this.tetrimino+" )";
+	}
 }

@@ -10,5 +10,5 @@ public enum Types {
 	Z,
 	S;
 
-	
+
 }
