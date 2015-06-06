@@ -2,10 +2,18 @@ package tetris.controller;
 
 import tetris.model.Game;
 
+/**
+ * Class that's implemented from Controller. It's used as a link between the model and the view.
+ * @author Numa
+ *
+ */
 public class ConsoleController implements Controller{
 	
 	private Game game;
 	
+	/**
+	 * Basic constructor for ConsoleController.
+	 */
 	public ConsoleController() {
 		
 	}

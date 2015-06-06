@@ -4,6 +4,11 @@ import tetris.controller.ConsoleController;
 import tetris.controller.Controller;
 import tetris.controller.SwingController;
 
+/**
+ * Main class where thet program is launched.
+ * @author Numa
+ *
+ */
 public class Main 
 {
 	public static void main(String[] args) 

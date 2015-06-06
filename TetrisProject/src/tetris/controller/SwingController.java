@@ -6,6 +6,11 @@ import tetris.model.Game;
 import tetris.model.Types;
 import tetris.view.Display;
 
+/**
+ * Class that redefines the methods required by the Controller interface. It is implemented from the Controller interface.
+ * @author Numa
+ *
+ */
 public class SwingController implements Controller{
 	
 	
@@ -13,6 +18,9 @@ public class SwingController implements Controller{
 	
 	private Display display;
 	
+	/**
+	 * Method that allows to monitor the swing window.
+	 */
 	public SwingController() {
 		
 	}
@@ -30,6 +38,10 @@ public class SwingController implements Controller{
 		
 	}
 	
+	/**
+	 * Method returning the board dimensions (speaking in Boxes), into an int grid.
+	 * @return int[]
+	 */
 	public int[] getBoardDimensions(){
 		int i = game.getBoard().getRows();
 		int j = game.getBoard().getColumns();
@@ -37,6 +49,12 @@ public class SwingController implements Controller{
 		return dim;
 	}
 	
+	/**
+	 * Method that returns the type of a grid by giving it the row and the column.
+	 * @param row
+	 * @param col
+	 * @return Types
+	 */
 	public Types getTypeFromBox(int row, int col){
 		try{
 		return game.getBoard().getBox(row, col).getTetrimino().getType();
