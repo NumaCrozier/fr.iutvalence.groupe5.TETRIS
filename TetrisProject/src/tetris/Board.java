@@ -20,8 +20,11 @@ public class Board {
 	 */
 	public Board(int rows, int columns) 
 	{
-		new Board();
-		this.box = new Box[NB_ROWS][NB_COLUMNS];
+		
+		this.rows=NB_ROWS;
+		this.columns=NB_COLUMNS;
+		this.box = new Box[rows][columns];
+		InitBox();
 	}
 
 
@@ -30,10 +33,7 @@ public class Board {
 	 */
 	public Board()
 	{
-		this.rows=NB_ROWS;
-		this.columns=NB_COLUMNS;
-		this.box = new Box[NB_ROWS][NB_COLUMNS];
-		InitBox();
+		this(NB_ROWS,NB_COLUMNS);
 	}
 	
 	public void setTetrimino(Tetriminos tetrimino){
