@@ -76,6 +76,10 @@ public class Tetriminos {
 		return this.relativesBox[n];
 	}
 	
+	public Types getType() {
+		return type;
+	}
+	
 	@Override
 	public String toString() {
 		switch (this.type)

@@ -10,7 +10,7 @@ public class Main
 	{
 		Controller controller;
 		
-		controller = new ConsoleController();
+		controller = new SwingController();
 
 		
 		controller.createNewGame();

@@ -21,6 +21,24 @@ public class ConsoleController implements Controller{
 		System.out.println(game.getBoard().toString());
 		
 	}
+
+	@Override
+	public void refreshDisplay() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void rotateTetrimino() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void moveTetriminoForward() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 

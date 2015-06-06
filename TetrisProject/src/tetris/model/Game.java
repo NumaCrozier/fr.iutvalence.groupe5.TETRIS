@@ -28,7 +28,6 @@ public class Game
 		this.player = new Player();
 		this.board = new Board();
 		this.board.setTetrimino(new Tetriminos(Types.J, new Position(5, 5)));
-		System.out.println(this.board.getPlayedBoxes());   // TODO : Ligne pour vérifier si il trouve bien des PLAYED Boxes
 	}
 	
 	public boolean play(){
@@ -43,7 +42,7 @@ public class Game
 			
 			@Override
 			public void run() {
-				// TODO Auto-generated method stub
+				
 				
 			}
 		};

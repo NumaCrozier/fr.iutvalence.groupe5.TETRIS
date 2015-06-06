@@ -14,6 +14,7 @@ public class ButtonColors extends JButton implements ActionListener{
 	public ButtonColors(Display display) {
 		super("Colors");
 		this.display = display;
+		addActionListener(this);
 	}	
 	
 	@Override

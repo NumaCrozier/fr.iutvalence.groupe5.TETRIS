@@ -9,9 +9,9 @@ public class Board {
 
 	private final static int NB_COLUMNS = 10;
 
-	private int rows;
+	private final int rows;
 
-	private int columns;
+	private final int columns;
 
 	private Box[][] box;
 
@@ -73,6 +73,53 @@ public class Board {
 			}
 		}
 	}
+	
+	private Box getNextBox(String direction, Box initialBox){
+		switch(direction){
+		case "bottom" : return getBottomBox(initialBox.getBoxPosition());
+		case "upper" : return getUpperBox(initialBox.getBoxPosition());
+		case "left" : return getLeftBox(initialBox.getBoxPosition());
+		case "right" : return getRightBox(initialBox.getBoxPosition());
+		default:
+			return null;
+		}
+	}
+	
+	/**
+	 * allow to get the bottom box of the location.
+	 * @param location from the method is used
+	 * @return the box we need to get
+	 */
+	private Box getBottomBox(Position position){
+		return this.box[position.getRow()+1][position.getColumn()];
+	}
+	
+	/**
+	 * allow to get the upper box of the location.
+	 * @param location from the method is used
+	 * @return the box we need to get
+	 */
+	private Box getUpperBox(Position position){
+		return this.box[position.getRow()-1][position.getColumn()];
+	}
+	
+	/**
+	 * allow to get the left box of the location.
+	 * @param location from the method is used
+	 * @return the box we need to get
+	 */
+	private Box getLeftBox(Position position){
+		return this.box[position.getRow()][position.getColumn()-1];
+	}
+	
+	/**
+	 * allow to get the right box of the location.
+	 * @param location from the method is used
+	 * @return the box we need to get
+	 */
+	private Box getRightBox(Position position){
+		return this.box[position.getRow()][position.getColumn()+1];
+	}
 
 	/**
 	 * Method that displays the game board.
@@ -96,6 +143,14 @@ public class Board {
             str += "|\n---------------------------------------------\n";
 		}	
 		return str;
+	}
+	
+	public int getRows() {
+		return rows;
+	}
+	
+	public int getColumns() {
+		return columns;
 	}
 
 }

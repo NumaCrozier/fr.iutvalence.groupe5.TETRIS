@@ -14,6 +14,7 @@ public class ButtonExit extends JButton implements ActionListener{
 	public ButtonExit(Display display) {
 		super("Exit");
 		this.display = display;
+		addActionListener(this);
 	}
 	
 	@Override

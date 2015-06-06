@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 import tetris.view.Display;
+import tetris.view.containers.Game;
 
 public class ButtonPlay extends JButton implements ActionListener{
 	
@@ -20,12 +21,15 @@ public class ButtonPlay extends JButton implements ActionListener{
 	public ButtonPlay(Display display) {
 		super("Play");
 		this.display = display;
+		addActionListener(this);
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO play
-		
+		display.getFrame().setContentPane(new Game(display));
+		int tab[] = display.getController().getBoardDimensions();
+		display.getFrame().setSize(tab[1]*40, tab[0]*40);
+		display.getFrame().revalidate();
 	}
 
 }

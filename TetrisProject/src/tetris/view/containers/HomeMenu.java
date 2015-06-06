@@ -20,7 +20,7 @@ public class HomeMenu extends JPanel{
 		add(new ButtonPlay(display));
 		add(new ButtonScores(display));
 		add(new ButtonColors(display));
-		add(new ButtonExit(display));		
+		add(new ButtonExit(display));	
 	}
 
 }

@@ -20,6 +20,7 @@ public class ButtonScores extends JButton implements ActionListener{
 	public ButtonScores(Display display) {
 		super("High Scores");
 		this.display = display;
+		addActionListener(this);
 	}
 	
 	@Override
