@@ -1,4 +1,4 @@
-package tetris;
+package tetris.model;
 
 /**
  * Enumeration that contains every type of tetrimino.

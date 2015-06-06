@@ -1,4 +1,6 @@
-package tetris;
+package tetris.model;
+
+import java.util.TimerTask;
 
 public class Game 
 {
@@ -26,6 +28,34 @@ public class Game
 		this.player = new Player();
 		this.board = new Board();
 		this.board.setTetrimino(new Tetriminos(Types.J, new Position(5, 5)));
+	}
+	
+	public boolean play(){
+		
+		
+		return false;
+	}
+	
+	
+	private TimerTask createTimer(){
+		TimerTask timer = new TimerTask() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				
+			}
+		};
+		
+		return timer;
+	}
+	
+	private boolean forward(){
+		
+		
+		
+		
+		return true;
 	}
 	
 	
