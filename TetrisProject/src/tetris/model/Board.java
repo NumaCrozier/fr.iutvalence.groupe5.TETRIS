@@ -29,7 +29,14 @@ public class Board {
 		this.box = new Box[rows][columns];
 		InitBox();
 	}
-
+	/**
+	 * Constructor for Board class.
+	 */
+	public Board()
+	{
+		this(NB_ROWS,NB_COLUMNS);
+	}
+	
 	public List<Box> getPlayedBoxes(){
 		List<Box> list = new ArrayList<Box>();
 		for(int counterRows = 0 ; counterRows < NB_ROWS; counterRows++)
@@ -44,12 +51,51 @@ public class Board {
 		return list;
 	}
 	
+	private Box getNextBox(String direction, Box initialBox){
+		switch(direction){
+		case "bottom" : return getBottomBox(initialBox.getBoxPosition());
+		case "upper" : return getUpperBox(initialBox.getBoxPosition());
+		case "left" : return getLeftBox(initialBox.getBoxPosition());
+		case "right" : return getRightBox(initialBox.getBoxPosition());
+		default:
+			return null;
+		}
+	}
+	
 	/**
-	 * Constructor for Board class.
+	 * allow to get the bottom box of the location.
+	 * @param location from the method is used
+	 * @return the box we need to get
 	 */
-	public Board()
-	{
-		this(NB_ROWS,NB_COLUMNS);
+	public Box getBottomBox(Position position){
+		return this.box[position.getRow()+1][position.getColumn()];
+	}
+	
+	/**
+	 * allow to get the upper box of the location.
+	 * @param location from the method is used
+	 * @return the box we need to get
+	 */
+	public Box getUpperBox(Position position){
+		return this.box[position.getRow()-1][position.getColumn()];
+	}
+	
+	/**
+	 * allow to get the left box of the location.
+	 * @param location from the method is used
+	 * @return the box we need to get
+	 */
+	public Box getLeftBox(Position position){
+		return this.box[position.getRow()][position.getColumn()-1];
+	}
+	
+	/**
+	 * allow to get the right box of the location.
+	 * @param location from the method is used
+	 * @return the box we need to get
+	 */
+	public Box getRightBox(Position position){
+		return this.box[position.getRow()][position.getColumn()+1];
 	}
 	
 	public void setTetrimino(Tetriminos tetrimino){
