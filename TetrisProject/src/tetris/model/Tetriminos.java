@@ -4,7 +4,7 @@ public class Tetriminos {
 	
 	private final Types type;
 	
-	private Position position;
+	private Location position;
 	
 	private Box[] relativesBox;
 	
@@ -13,53 +13,53 @@ public class Tetriminos {
 	 * @param type
 	 * @param position
 	 */
-	public Tetriminos(Types type, Position position) 
+	public Tetriminos(Types type, Location position) 
 	{
 		this.relativesBox = new Box[4];
 		this.type=type;
 		this.position=position;
 		switch (this.type){
 		case I:
-			relativesBox[0]= new Box(new Position(position.getRow(),position.getColumn()));
-			relativesBox[1]= new Box(new Position(position.getRow()-1,position.getColumn()));
-			relativesBox[2]= new Box(new Position(position.getRow()-2,position.getColumn()));
-			relativesBox[3]= new Box(new Position(position.getRow()-3,position.getColumn()));
+			relativesBox[0]= new Box(new Location(position.getRow(),position.getColumn()));
+			relativesBox[1]= new Box(new Location(position.getRow()-1,position.getColumn()));
+			relativesBox[2]= new Box(new Location(position.getRow()-2,position.getColumn()));
+			relativesBox[3]= new Box(new Location(position.getRow()-3,position.getColumn()));
 			break;
 		case O:
-			relativesBox[0]= new Box(new Position(position.getRow(),position.getColumn()));
-			relativesBox[1]= new Box(new Position(position.getRow()-1,position.getColumn()));
-			relativesBox[2]= new Box(new Position(position.getRow()-1,position.getColumn()+1));
-			relativesBox[3]= new Box(new Position(position.getRow(),position.getColumn()+1));
+			relativesBox[0]= new Box(new Location(position.getRow(),position.getColumn()));
+			relativesBox[1]= new Box(new Location(position.getRow()-1,position.getColumn()));
+			relativesBox[2]= new Box(new Location(position.getRow()-1,position.getColumn()+1));
+			relativesBox[3]= new Box(new Location(position.getRow(),position.getColumn()+1));
 			break;
 		case L:
-			relativesBox[0]= new Box(new Position(position.getRow(),position.getColumn()));
-			relativesBox[1]= new Box(new Position(position.getRow()-1,position.getColumn()));
-			relativesBox[2]= new Box(new Position(position.getRow()-2,position.getColumn()));
-			relativesBox[3]= new Box(new Position(position.getRow(),position.getColumn()+1));
+			relativesBox[0]= new Box(new Location(position.getRow(),position.getColumn()));
+			relativesBox[1]= new Box(new Location(position.getRow()-1,position.getColumn()));
+			relativesBox[2]= new Box(new Location(position.getRow()-2,position.getColumn()));
+			relativesBox[3]= new Box(new Location(position.getRow(),position.getColumn()+1));
 			break;
 		case Z:
-			relativesBox[0]= new Box(new Position(position.getRow(),position.getColumn()));
-			relativesBox[1]= new Box(new Position(position.getRow(),position.getColumn()+1));
-			relativesBox[2]= new Box(new Position(position.getRow()-1,position.getColumn()));
-			relativesBox[3]= new Box(new Position(position.getRow()-1,position.getColumn()-1));
+			relativesBox[0]= new Box(new Location(position.getRow(),position.getColumn()));
+			relativesBox[1]= new Box(new Location(position.getRow(),position.getColumn()+1));
+			relativesBox[2]= new Box(new Location(position.getRow()-1,position.getColumn()));
+			relativesBox[3]= new Box(new Location(position.getRow()-1,position.getColumn()-1));
 			break;
 		case S:
-			relativesBox[0]= new Box(new Position(position.getRow(),position.getColumn()));
-			relativesBox[1]= new Box(new Position(position.getRow(),position.getColumn()-1));
-			relativesBox[2]= new Box(new Position(position.getRow()-1,position.getColumn()));
-			relativesBox[3]= new Box(new Position(position.getRow()-1,position.getColumn()+1));
+			relativesBox[0]= new Box(new Location(position.getRow(),position.getColumn()));
+			relativesBox[1]= new Box(new Location(position.getRow(),position.getColumn()-1));
+			relativesBox[2]= new Box(new Location(position.getRow()-1,position.getColumn()));
+			relativesBox[3]= new Box(new Location(position.getRow()-1,position.getColumn()+1));
 			break;
 		case T:
-			relativesBox[0]= new Box(new Position(position.getRow(),position.getColumn()));
-			relativesBox[1]= new Box(new Position(position.getRow()-1,position.getColumn()));
-			relativesBox[2]= new Box(new Position(position.getRow()-1,position.getColumn()-1));
-			relativesBox[3]= new Box(new Position(position.getRow()-1,position.getColumn()+1));
+			relativesBox[0]= new Box(new Location(position.getRow(),position.getColumn()));
+			relativesBox[1]= new Box(new Location(position.getRow()-1,position.getColumn()));
+			relativesBox[2]= new Box(new Location(position.getRow()-1,position.getColumn()-1));
+			relativesBox[3]= new Box(new Location(position.getRow()-1,position.getColumn()+1));
 			break;
 		case J:
-			relativesBox[0]= new Box(new Position(position.getRow(),position.getColumn()));
-			relativesBox[1]= new Box(new Position(position.getRow(),position.getColumn()-1));
-			relativesBox[2]= new Box(new Position(position.getRow()-1,position.getColumn()));
-			relativesBox[3]= new Box(new Position(position.getRow()-2,position.getColumn()));
+			relativesBox[0]= new Box(new Location(position.getRow(),position.getColumn()));
+			relativesBox[1]= new Box(new Location(position.getRow(),position.getColumn()-1));
+			relativesBox[2]= new Box(new Location(position.getRow()-1,position.getColumn()));
+			relativesBox[3]= new Box(new Location(position.getRow()-2,position.getColumn()));
 			break;
 		//case NONE:
 		//	relativesBox[0]= new Box(new Position(position.getRow(),position.getColumn()));

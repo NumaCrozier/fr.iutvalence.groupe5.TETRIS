@@ -27,7 +27,7 @@ public class Game
 	{
 		this.player = new Player();
 		this.board = new Board();
-		this.board.setTetrimino(new Tetriminos(Types.J, new Position(5, 5)));
+		this.board.setTetrimino(new Tetriminos(Types.J, new Location(5, 5)));
 	}
 	
 	public boolean play(){

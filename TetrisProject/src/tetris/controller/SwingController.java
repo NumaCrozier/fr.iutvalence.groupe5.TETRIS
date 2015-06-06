@@ -46,7 +46,8 @@ public class SwingController implements Controller{
 
 	@Override
 	public void refreshDisplay() {
-		// TODO Auto-generated method stub
+		display.refreshGame();
+		
 		
 	}
 
@@ -60,6 +61,27 @@ public class SwingController implements Controller{
 
 	@Override
 	public void moveTetriminoForward() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void moveTetriminoRight() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void moveTetriminoLeft() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void pause() {
 		// TODO Auto-generated method stub
 		
 	}

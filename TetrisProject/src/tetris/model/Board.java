@@ -29,6 +29,7 @@ public class Board {
 		this.box = new Box[rows][columns];
 		InitBox();
 	}
+	
 	/**
 	 * Constructor for Board class.
 	 */
@@ -53,10 +54,10 @@ public class Board {
 	
 	
 	public void setTetrimino(Tetriminos tetrimino){
-		this.box[tetrimino.getRelativesBox(0).getBoxPosition().getRow()][tetrimino.getRelativesBox(0).getBoxPosition().getColumn()].setTetrimino(tetrimino);
-		this.box[tetrimino.getRelativesBox(1).getBoxPosition().getRow()][tetrimino.getRelativesBox(1).getBoxPosition().getColumn()].setTetrimino(tetrimino);
-		this.box[tetrimino.getRelativesBox(2).getBoxPosition().getRow()][tetrimino.getRelativesBox(2).getBoxPosition().getColumn()].setTetrimino(tetrimino);
-		this.box[tetrimino.getRelativesBox(3).getBoxPosition().getRow()][tetrimino.getRelativesBox(3).getBoxPosition().getColumn()].setTetrimino(tetrimino);
+		this.box[tetrimino.getRelativesBox(0).getBoxLocation().getRow()][tetrimino.getRelativesBox(0).getBoxLocation().getColumn()].setTetrimino(tetrimino);
+		this.box[tetrimino.getRelativesBox(1).getBoxLocation().getRow()][tetrimino.getRelativesBox(1).getBoxLocation().getColumn()].setTetrimino(tetrimino);
+		this.box[tetrimino.getRelativesBox(2).getBoxLocation().getRow()][tetrimino.getRelativesBox(2).getBoxLocation().getColumn()].setTetrimino(tetrimino);
+		this.box[tetrimino.getRelativesBox(3).getBoxLocation().getRow()][tetrimino.getRelativesBox(3).getBoxLocation().getColumn()].setTetrimino(tetrimino);
 	}
 	
 	/**
@@ -69,17 +70,17 @@ public class Board {
 			for(int counterColumns = 0 ; counterColumns < NB_COLUMNS; counterColumns++)
 			{
 				//Box emptyBox = new Box(new Position(counterBoxRows , counterBoxColumns));
-				this.box[counterRows][counterColumns] = new Box(new Position(counterRows, counterColumns));
+				this.box[counterRows][counterColumns] = new Box(new Location(counterRows, counterColumns));
 			}
 		}
 	}
 	
 	public Box getNextBox(String direction, Box initialBox){
 		switch(direction){
-		case "bottom" : return getBottomBox(initialBox.getBoxPosition());
-		case "upper" : return getUpperBox(initialBox.getBoxPosition());
-		case "left" : return getLeftBox(initialBox.getBoxPosition());
-		case "right" : return getRightBox(initialBox.getBoxPosition());
+		case "bottom" : return getBottomBox(initialBox.getBoxLocation());
+		case "upper" : return getUpperBox(initialBox.getBoxLocation());
+		case "left" : return getLeftBox(initialBox.getBoxLocation());
+		case "right" : return getRightBox(initialBox.getBoxLocation());
 		default:
 			return null;
 		}
@@ -90,7 +91,7 @@ public class Board {
 	 * @param location from the method is used
 	 * @return the box we need to get
 	 */
-	private Box getBottomBox(Position position){
+	private Box getBottomBox(Location position){
 		return this.box[position.getRow()+1][position.getColumn()];
 	}
 	
@@ -99,7 +100,7 @@ public class Board {
 	 * @param location from the method is used
 	 * @return the box we need to get
 	 */
-	private Box getUpperBox(Position position){
+	private Box getUpperBox(Location position){
 		return this.box[position.getRow()-1][position.getColumn()];
 	}
 	
@@ -108,7 +109,7 @@ public class Board {
 	 * @param location from the method is used
 	 * @return the box we need to get
 	 */
-	private Box getLeftBox(Position position){
+	private Box getLeftBox(Location position){
 		return this.box[position.getRow()][position.getColumn()-1];
 	}
 	
@@ -117,7 +118,7 @@ public class Board {
 	 * @param location from the method is used
 	 * @return the box we need to get
 	 */
-	private Box getRightBox(Position position){
+	private Box getRightBox(Location position){
 		return this.box[position.getRow()][position.getColumn()+1];
 	}
 

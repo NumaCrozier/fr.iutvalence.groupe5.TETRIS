@@ -39,6 +39,24 @@ public class ConsoleController implements Controller{
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void moveTetriminoRight() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void moveTetriminoLeft() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void pause() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 

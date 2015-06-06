@@ -21,7 +21,9 @@ public class Game extends JPanel{
 		
 	}
 	
-	
+	public void refresh(){
+		board.refreshPanel();
+	}
 	
 
 }

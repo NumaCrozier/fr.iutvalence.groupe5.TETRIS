@@ -11,5 +11,11 @@ public interface Controller {
 	public void rotateTetrimino();
 	
 	public void moveTetriminoForward();
+	
+	public void moveTetriminoRight();
+	
+	public void moveTetriminoLeft();
+	
+	public void pause();
 
 }

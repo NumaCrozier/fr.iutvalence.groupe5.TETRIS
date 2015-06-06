@@ -4,12 +4,14 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import tetris.controller.SwingController;
+import tetris.view.containers.Game;
 import tetris.view.containers.HomeMenu;
 
 public class Display implements Runnable{
 
 	private JFrame frame;
 	private JPanel homeMenu;
+	private Game game;
 	private SwingController controller;
 	
 	public Display(SwingController controller) {
@@ -33,6 +35,18 @@ public class Display implements Runnable{
 	
 	public JFrame getFrame() {
 		return frame;
+	}
+	
+	public Game getGame() {
+		return game;
+	}
+	
+	public void setGame(Game game) {
+		this.game = game;
+	}
+	
+	public void refreshGame(){
+		game.refresh();
 	}
 	
 	public SwingController getController() {

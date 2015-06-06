@@ -2,7 +2,7 @@ package tetris.model;
 
 public class Box {
 
-	private final Position boxPosition;
+	private final Location boxLocation;
 
 	private States state;
 
@@ -12,8 +12,8 @@ public class Box {
 	 * Constructor parametered for Box class.
 	 * @param position
 	 */
-	public Box(Position position) {
-		this.boxPosition=position;
+	public Box(Location position) {
+		this.boxLocation=position;
 		this.state=States.EMPTY;
 		this.tetrimino = null;
 	//	this.setTetrimino(new Tetriminos(Types.NONE,new Position(0,0)));
@@ -24,9 +24,9 @@ public class Box {
 	 * Method allowing to get a Box position.
 	 * @return
 	 */
-	public Position getBoxPosition() 
+	public Location getBoxLocation() 
 	{
-		return boxPosition;
+		return boxLocation;
 	}
 
 	/**
