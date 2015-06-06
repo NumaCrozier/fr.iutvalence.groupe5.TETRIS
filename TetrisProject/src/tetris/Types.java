@@ -1,5 +1,10 @@
 package tetris;
 
+/**
+ * Enumeration that contains every type of tetrimino.
+ * @author Numa
+ *
+ */
 public enum Types {
 
 	I,
@@ -8,7 +13,8 @@ public enum Types {
 	L,
 	J,
 	Z,
-	S;
+	S,
+	NONE;
 
 
 }

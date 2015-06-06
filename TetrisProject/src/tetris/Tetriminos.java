@@ -8,6 +8,11 @@ public class Tetriminos {
 	
 	private Box[] relativesBox;
 	
+	/**
+	 * Constructor for our tetriminos, including the box the tetrimino will take.
+	 * @param type
+	 * @param position
+	 */
 	public Tetriminos(Types type, Position position) 
 	{
 		this.type=type;
@@ -54,6 +59,12 @@ public class Tetriminos {
 			relativesBox[2]= new Box(new Position(position.getRow()-1,position.getColumn()));
 			relativesBox[3]= new Box(new Position(position.getRow()-2,position.getColumn()));
 			break;
+		case NONE:
+			relativesBox[0]= new Box(new Position(position.getRow(),position.getColumn()));
+			relativesBox[1]= new Box(new Position(position.getRow(),position.getColumn()));
+			relativesBox[2]= new Box(new Position(position.getRow(),position.getColumn()));
+			relativesBox[3]= new Box(new Position(position.getRow(),position.getColumn()));
+			break;
 		default : System.err.println("Le type de Tetriminos ne correspond à aucun connu.");
 		break;
 		}
@@ -68,6 +79,7 @@ public class Tetriminos {
 		case Z : return "Z";
 		case S : return "S";
 		case T : return "T";
+		case NONE : return "NONE";
 		default : return "Unknown";
 		}
 	}

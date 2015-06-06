@@ -13,6 +13,11 @@ public class Board {
 	private Box[][] box;
 
 
+	/**
+	 * Constructor with parameters for Board class.
+	 * @param rows
+	 * @param columns
+	 */
 	public Board(int rows, int columns) 
 	{
 		new Board();
@@ -20,26 +25,34 @@ public class Board {
 	}
 
 
+	/**
+	 * Constructor for Board class.
+	 */
 	public Board()
 	{
 		this.rows=NB_ROWS;
 		this.columns=NB_COLUMNS;
-		InitBox(NB_COLUMNS, NB_ROWS);
+		InitBox();
 	}
-
-
-	public void InitBox(int numberOfColumns, int numberOfRows)
+	
+	/**
+	 * Method that initializes the Box grid.
+	 */
+	public void InitBox()
 	{
-		for(int counterBoxColumns = 0 ; counterBoxColumns < numberOfColumns ; counterBoxColumns++)
+		for(int counterBoxRows = 0 ; counterBoxRows < NB_ROWS; counterBoxRows++)
 		{
-			for(int counterBoxRows = 0 ; counterBoxRows < numberOfRows ; counterBoxRows++)
+			for(int counterBoxColumns = 0 ; counterBoxColumns < NB_COLUMNS; counterBoxColumns++)
 			{
 				Box emptyBox = new Box(new Position(counterBoxRows , counterBoxColumns));
-				this.box[counterBoxRows][counterBoxColumns] = emptyBox; 
+				this.box[counterBoxColumns][counterBoxRows] = emptyBox;
 			}
 		}
 	}
 
+	/**
+	 * Method that displays the game board.
+	 */
 	public void DisplayBoard()
 	{
 		for(int counterToDisplayBoardColumns = 0; counterToDisplayBoardColumns < NB_COLUMNS ; counterToDisplayBoardColumns++)
