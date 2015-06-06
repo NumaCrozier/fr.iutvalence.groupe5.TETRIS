@@ -45,7 +45,7 @@ public class Box {
 	public void setTetrimino(Tetriminos tetrimino) 
 	{
 		this.tetrimino = tetrimino;
-		this.state = States.PLACED;
+		this.state = States.PLAYED;  //TODO : Remettre PLACED à la place de PLAYED
 	}
 
 	/**
@@ -57,7 +57,11 @@ public class Box {
 		this.state = state;
 	}
 
-
+	public States getState()
+	{
+		return this.state;
+	}
+	
 	@Override
 	public String toString() 
 	{

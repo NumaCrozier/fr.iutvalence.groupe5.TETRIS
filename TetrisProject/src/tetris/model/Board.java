@@ -1,5 +1,8 @@
 package tetris.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Board {
 
 	private final static int NB_ROWS = 22;
@@ -27,7 +30,20 @@ public class Board {
 		InitBox();
 	}
 
-
+	public List<Box> getPlayedBoxes(){
+		List<Box> list = new ArrayList<Box>();
+		for(int counterRows = 0 ; counterRows < NB_ROWS; counterRows++)
+		{
+			for(int counterColumns = 0 ; counterColumns < NB_COLUMNS; counterColumns++)
+			{
+				if(this.box[counterRows][counterColumns].getState()==States.PLAYED){
+					list.add(this.box[counterRows][counterColumns]);
+				}
+			}
+		}
+		return list;
+	}
+	
 	/**
 	 * Constructor for Board class.
 	 */
