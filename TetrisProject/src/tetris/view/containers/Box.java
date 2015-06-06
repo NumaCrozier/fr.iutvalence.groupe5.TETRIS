@@ -16,17 +16,14 @@ public class Box extends JLabel{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private Types type;
-	
-	public Box(Types type) {
-		this.type = type;
-		setColor();
+	public Box() {
+		setColor(null);
 		setOpaque(true);
 		setPreferredSize(new Dimension(40,40));
 		setBorder(new LineBorder(Color.BLACK));
 	}
 	
-	public void setColor(){
+	public void setColor(Types type){
 		
 		BoxesColors color;
 		
@@ -46,8 +43,4 @@ public class Box extends JLabel{
 		setBackground(color.getColor());
 	}
 	
-	public void setType(Types type) {
-		this.type = type;
-	}
-
 }

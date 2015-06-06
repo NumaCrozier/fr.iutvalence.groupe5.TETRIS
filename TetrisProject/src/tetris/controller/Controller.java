@@ -31,5 +31,11 @@ public interface Controller {
 	 * Method that allows to make the tetrimino currently played to go one box down.
 	 */
 	public void moveTetriminoForward();
+	
+	public void moveTetriminoRight();
+	
+	public void moveTetriminoLeft();
+	
+	public void pause();
 
 }

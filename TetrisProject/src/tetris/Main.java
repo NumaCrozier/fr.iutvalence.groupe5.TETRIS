@@ -1,6 +1,5 @@
 package tetris;
 
-import tetris.controller.ConsoleController;
 import tetris.controller.Controller;
 import tetris.controller.SwingController;
 

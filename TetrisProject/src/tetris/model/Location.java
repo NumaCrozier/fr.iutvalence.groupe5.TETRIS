@@ -1,6 +1,6 @@
 package tetris.model;
 
-public class Position {
+public class Location {
 
 	private final int row;
 	
@@ -11,7 +11,7 @@ public class Position {
 	 * @param row
 	 * @param column
 	 */
-	public Position(int row, int column) {
+	public Location(int row, int column) {
 		this.row=row;
 		this.column=column;
 	}
