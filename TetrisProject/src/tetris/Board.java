@@ -68,15 +68,16 @@ public class Board {
 	
 	public String toString()
 	{
-		String str="-------------------------------------------------------------------------------------\n|   |   0   |   1   |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   |\n-------------------------------------------------------------------------------------\n";
+		String str="---------------------------------------------\n"
+				+ "|   | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |\n---------------------------------------------\n";
 		for(int counterRows = 0; counterRows < this.rows ; counterRows++)
 		{
-        	str += "| "+counterRows+" ";
+        	str += "| "+counterRows+ (counterRows < 10 ? " ": "" );
 			for(int counterColumns = 0; counterColumns < this.columns; counterColumns++)
 			{
 				str += this.box[counterRows][counterColumns].toString();
 			}
-            str += "|\n-------------------------------------------------------------------------------------\n";
+            str += "|\n---------------------------------------------\n";
 		}	
 		return str;
 	}

@@ -61,7 +61,7 @@ public class Box {
 	@Override
 	public String toString() 
 	{
-		return "| "+this.state+" ";
+		return "| "+this.state.toChar()+" ";
 		
 	}
 }

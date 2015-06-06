@@ -10,16 +10,27 @@ public enum States {
 	/**
 	 * The box has nothing on it, no tetrimino.
 	 */
-	EMPTY,
+	EMPTY(' '),
 	
 	/**
 	 * The box is played, a tetrimino is passing through it.
 	 */
-	PLAYED,
+	PLAYED('X'),
 	
 	/**
 	 * The box has a tetrimino placed on it (it can't move unless you get a complete line).
 	 */
-	PLACED;
+	PLACED('O');
+	
+	private char id;
+	
+	private States(char id) {
+		this.id = id;
+	}
+	
+	
+	public char toChar(){
+		return this.id;
+	}
 	
 }
