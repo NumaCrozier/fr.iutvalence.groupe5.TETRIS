@@ -51,52 +51,6 @@ public class Board {
 		return list;
 	}
 	
-	private Box getNextBox(String direction, Box initialBox){
-		switch(direction){
-		case "bottom" : return getBottomBox(initialBox.getBoxPosition());
-		case "upper" : return getUpperBox(initialBox.getBoxPosition());
-		case "left" : return getLeftBox(initialBox.getBoxPosition());
-		case "right" : return getRightBox(initialBox.getBoxPosition());
-		default:
-			return null;
-		}
-	}
-	
-	/**
-	 * allow to get the bottom box of the location.
-	 * @param location from the method is used
-	 * @return the box we need to get
-	 */
-	public Box getBottomBox(Position position){
-		return this.box[position.getRow()+1][position.getColumn()];
-	}
-	
-	/**
-	 * allow to get the upper box of the location.
-	 * @param location from the method is used
-	 * @return the box we need to get
-	 */
-	public Box getUpperBox(Position position){
-		return this.box[position.getRow()-1][position.getColumn()];
-	}
-	
-	/**
-	 * allow to get the left box of the location.
-	 * @param location from the method is used
-	 * @return the box we need to get
-	 */
-	public Box getLeftBox(Position position){
-		return this.box[position.getRow()][position.getColumn()-1];
-	}
-	
-	/**
-	 * allow to get the right box of the location.
-	 * @param location from the method is used
-	 * @return the box we need to get
-	 */
-	public Box getRightBox(Position position){
-		return this.box[position.getRow()][position.getColumn()+1];
-	}
 	
 	public void setTetrimino(Tetriminos tetrimino){
 		this.box[tetrimino.getRelativesBox(0).getBoxPosition().getRow()][tetrimino.getRelativesBox(0).getBoxPosition().getColumn()].setTetrimino(tetrimino);
@@ -120,7 +74,7 @@ public class Board {
 		}
 	}
 	
-	private Box getNextBox(String direction, Box initialBox){
+	public Box getNextBox(String direction, Box initialBox){
 		switch(direction){
 		case "bottom" : return getBottomBox(initialBox.getBoxPosition());
 		case "upper" : return getUpperBox(initialBox.getBoxPosition());
