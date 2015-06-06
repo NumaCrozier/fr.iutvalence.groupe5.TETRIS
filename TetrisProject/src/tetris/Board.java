@@ -21,8 +21,8 @@ public class Board {
 	public Board(int rows, int columns) 
 	{
 		
-		this.rows=NB_ROWS;
-		this.columns=NB_COLUMNS;
+		this.rows=rows;
+		this.columns=columns;
 		this.box = new Box[rows][columns];
 		InitBox();
 	}
