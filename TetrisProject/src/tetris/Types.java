@@ -13,8 +13,8 @@ public enum Types {
 	L,
 	J,
 	Z,
-	S,
-	NONE;
+	S;
+	//NONE;
 
 
 }

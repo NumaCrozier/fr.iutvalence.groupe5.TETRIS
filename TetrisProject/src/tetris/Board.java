@@ -32,7 +32,15 @@ public class Board {
 	{
 		this.rows=NB_ROWS;
 		this.columns=NB_COLUMNS;
+		this.box = new Box[NB_ROWS][NB_COLUMNS];
 		InitBox();
+	}
+	
+	public void setTetrimino(Tetriminos tetrimino){
+		this.box[tetrimino.getRelativesBox(0).getBoxPosition().getRow()][tetrimino.getRelativesBox(0).getBoxPosition().getColumn()].setTetrimino(tetrimino);
+		this.box[tetrimino.getRelativesBox(1).getBoxPosition().getRow()][tetrimino.getRelativesBox(1).getBoxPosition().getColumn()].setTetrimino(tetrimino);
+		this.box[tetrimino.getRelativesBox(2).getBoxPosition().getRow()][tetrimino.getRelativesBox(2).getBoxPosition().getColumn()].setTetrimino(tetrimino);
+		this.box[tetrimino.getRelativesBox(3).getBoxPosition().getRow()][tetrimino.getRelativesBox(3).getBoxPosition().getColumn()].setTetrimino(tetrimino);
 	}
 	
 	/**
@@ -40,12 +48,12 @@ public class Board {
 	 */
 	public void InitBox()
 	{
-		for(int counterBoxRows = 0 ; counterBoxRows < NB_ROWS; counterBoxRows++)
+		for(int counterRows = 0 ; counterRows < NB_ROWS; counterRows++)
 		{
-			for(int counterBoxColumns = 0 ; counterBoxColumns < NB_COLUMNS; counterBoxColumns++)
+			for(int counterColumns = 0 ; counterColumns < NB_COLUMNS; counterColumns++)
 			{
-				Box emptyBox = new Box(new Position(counterBoxRows , counterBoxColumns));
-				this.box[counterBoxColumns][counterBoxRows] = emptyBox;
+				//Box emptyBox = new Box(new Position(counterBoxRows , counterBoxColumns));
+				this.box[counterRows][counterColumns] = new Box(new Position(counterRows, counterColumns));
 			}
 		}
 	}
@@ -53,15 +61,24 @@ public class Board {
 	/**
 	 * Method that displays the game board.
 	 */
-	public void DisplayBoard()
+	public Box getBox(int row, int column)
 	{
-		for(int counterToDisplayBoardColumns = 0; counterToDisplayBoardColumns < NB_COLUMNS ; counterToDisplayBoardColumns++)
+		return this.box[row][column];
+	}
+	
+	public String toString()
+	{
+		String str="-------------------------------------------------------------------------------------\n|   |   0   |   1   |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   |\n-------------------------------------------------------------------------------------\n";
+		for(int counterRows = 0; counterRows < this.rows ; counterRows++)
 		{
-			for(int counterToDisplayBoardRows = 0; counterToDisplayBoardRows < this.NB_ROWS; counterToDisplayBoardRows++)
+        	str += "| "+counterRows+" ";
+			for(int counterColumns = 0; counterColumns < this.columns; counterColumns++)
 			{
-				System.out.println(this.box[counterToDisplayBoardColumns][counterToDisplayBoardRows]);
+				str += this.box[counterRows][counterColumns].toString();
 			}
+            str += "|\n-------------------------------------------------------------------------------------\n";
 		}	
+		return str;
 	}
 
 }

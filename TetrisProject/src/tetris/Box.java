@@ -15,7 +15,8 @@ public class Box {
 	public Box(Position position) {
 		this.boxPosition=position;
 		this.state=States.EMPTY;
-		this.setTetrimino(new Tetriminos(Types.NONE,new Position(0,0)));
+		this.tetrimino = null;
+	//	this.setTetrimino(new Tetriminos(Types.NONE,new Position(0,0)));
 	}
 
 
@@ -44,6 +45,7 @@ public class Box {
 	public void setTetrimino(Tetriminos tetrimino) 
 	{
 		this.tetrimino = tetrimino;
+		this.state = States.PLACED;
 	}
 
 	/**
@@ -59,6 +61,7 @@ public class Box {
 	@Override
 	public String toString() 
 	{
-		return "[ "+this.boxPosition+" ]"+"( "+this.state+" )"+"( "+this.tetrimino+" )";
+		return "| "+this.state+" ";
+		
 	}
 }
