@@ -32,6 +32,11 @@ public class ConsoleController implements Controller{
 		
 	}
 
+	
+	public ConfigManager getConfig() {
+		return config;
+	}
+
 	@Override
 	public void refreshDisplay() {
 		// TODO Auto-generated method stub
@@ -66,10 +71,6 @@ public class ConsoleController implements Controller{
 	public void pause() {
 		// TODO Auto-generated method stub
 		
-	}
-	
-	public ConfigManager getConfig() {
-		return config;
 	}
 	
 	

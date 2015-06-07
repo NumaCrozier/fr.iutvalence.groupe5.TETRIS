@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class ConfigManager{
 	
 	
-	private static File config;
+	private File config;
 	private static final String[] defaultControls = {"moveleft:"+KeyEvent.VK_LEFT,"moveright:"+KeyEvent.VK_RIGHT,"rotate:"+KeyEvent.VK_UP,
 													 "forward:"+KeyEvent.VK_DOWN,"pause:"+KeyEvent.VK_ESCAPE};
 	private static final String[] defaultHighScores = {"1: - - ","2: - - ","3: - - ","4: - - ","5: - - ","6: - - ","7: - - ","8: - - ","9: - - ","10: - - "};
@@ -100,7 +100,7 @@ public class ConfigManager{
 	 * @param newString : L'objet à enregistrer (Taduit en String) à la ligne <i>searched</i>.
 	 * @throws IOException
 	 */
-	public void saveDate(String sectionName, Object searched, Object newString) throws IOException{
+	public void saveData(String sectionName, Object searched, Object newString) throws IOException{
 		ConfigSection.writeDataInSection( config , sectionName , searched.toString() , newString.toString());	
 	}
 	

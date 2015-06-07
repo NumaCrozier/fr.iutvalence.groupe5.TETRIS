@@ -73,7 +73,7 @@ public class LangPanel extends JSplitPane implements ListSelectionListener{
 			display.getController().setLanguage(display.getController().getConfig().getDataInSection(ConfigManager.SECTION_LANG, jl.getSelectedValue()));
 		} catch (IOException e1) {}
 		try {
-			display.getController().getConfig().saveDate(ConfigManager.SECTION_LANG, "current", display.getController().getConfig().getDataInSection(ConfigManager.SECTION_LANG, jl.getSelectedValue()));
+			display.getController().getConfig().saveData(ConfigManager.SECTION_LANG, "current", display.getController().getConfig().getDataInSection(ConfigManager.SECTION_LANG, jl.getSelectedValue()));
 		} catch (IOException e1) {}
 		home.setText(display.getController().getString(home.getKey()));
 		display.getHomeMenu().setButtonsText();

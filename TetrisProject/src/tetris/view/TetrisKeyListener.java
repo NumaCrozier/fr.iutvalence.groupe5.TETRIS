@@ -2,6 +2,9 @@ package tetris.view;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
+
+import tetris.controller.ConfigManager;
 
 /**
  * Class that will be used to monitor the action from the keyboard to the swing interface.
@@ -19,22 +22,28 @@ public class TetrisKeyListener extends KeyAdapter{
 	
 	@Override
 	public void keyPressed(KeyEvent e) {
-		if(e.getKeyCode() == KeyEvent.VK_DOWN){
-			display.getController().moveTetriminoForward();
-		}
-		if(e.getKeyCode() == KeyEvent.VK_UP){
-			display.getController().rotateTetrimino();
-		}
-		if(e.getKeyCode() == KeyEvent.VK_RIGHT){
-			display.getController().moveTetriminoRight();
-		}
-		if(e.getKeyCode() == KeyEvent.VK_LEFT){
-			display.getController().moveTetriminoLeft();
-		}
-		if(e.getKeyCode() == KeyEvent.VK_SPACE){
-			display.getController().pause();
-		}
-		
+		try {
+			
+			if(e.getKeyCode() == Integer.valueOf(display.getController().getConfig().getDataInSection(ConfigManager.SECTION_CONTROLS, ConfigManager.CONTROL_FORWARD))){
+				display.getController().moveTetriminoForward();
+			}
+			if(e.getKeyCode() == Integer.valueOf(display.getController().getConfig().getDataInSection(ConfigManager.SECTION_CONTROLS, ConfigManager.CONTROL_ROTATE))){
+				display.getController().rotateTetrimino();
+			}
+
+			if(e.getKeyCode() == Integer.valueOf(display.getController().getConfig().getDataInSection(ConfigManager.SECTION_CONTROLS, ConfigManager.CONTROL_MOVE_RIGHT))){
+				display.getController().moveTetriminoRight();
+			}
+			
+			if(e.getKeyCode() == Integer.valueOf(display.getController().getConfig().getDataInSection(ConfigManager.SECTION_CONTROLS, ConfigManager.CONTROL_MOVE_LEFT))){
+				display.getController().moveTetriminoLeft();
+			}
+			
+			if(e.getKeyCode() == Integer.valueOf(display.getController().getConfig().getDataInSection(ConfigManager.SECTION_CONTROLS, ConfigManager.CONTROL_PAUSE))){
+				display.getController().pause();
+			}
+
+		} catch (NumberFormatException | IOException e1) {}
 	}
 
 }

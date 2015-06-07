@@ -3,8 +3,10 @@ package tetris.view.buttons;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import tetris.view.Display;
+import tetris.view.containers.ControlsPanel;
 
 public class ButtonControls extends TetrisButton implements ActionListener{
 		
@@ -21,7 +23,10 @@ public class ButtonControls extends TetrisButton implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		try {
+			display.getFrame().setContentPane(new ControlsPanel(display));
+		} catch (IOException e1) {}
+		display.getFrame().revalidate();
 		
 	}
 
