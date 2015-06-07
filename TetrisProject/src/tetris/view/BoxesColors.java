@@ -4,7 +4,7 @@ import java.awt.Color;
 
 /**
  * Enumeration that contains the colors the tetriminos will get on the Swing interface.
- * @author Numa
+ * @author Sedara
  *
  */
 public enum BoxesColors {

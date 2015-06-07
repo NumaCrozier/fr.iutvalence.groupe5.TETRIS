@@ -10,7 +10,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+
 /**
+ * Class that contains everything to manage the settings file.
  * @author Sedara
  *
  */
@@ -24,7 +26,7 @@ public class ConfigManager{
 	private static final String[] defaultBoxesColors = {"I:"+Integer.toString(Color.RED.getRGB()),"O:"+Integer.toString(Color.BLUE.getRGB()),"T:"+Integer.toString(Color.GRAY.getRGB()),
 														"L:"+Integer.toString(Color.MAGENTA.getRGB()),"J:"+Integer.toString(Color.WHITE.getRGB()),"Z:"+Integer.toString(Color.CYAN.getRGB()),
 														"S:"+Integer.toString(Color.GREEN.getRGB()),"EMPTY:"+Integer.toString(Color.BLACK.getRGB())};
-	private static final String[] defaultLang = {"English:en","Français:fr","current:en"};
+	private static final String[] defaultLang = {"English:en","Franï¿½ais:fr","current:en"};
 	public static final String SECTION_BOXES_COLORS = "boxescolors";
 	public static final String SECTION_CONTROLS = "controls";
 	public static final String SECTION_HIGHSCORES = "highscores";
@@ -40,8 +42,8 @@ public class ConfigManager{
 	// TODO Traduire
 
 	/**
-	 * Créer ou charge le fichier de configuration s'il est existant ou non.
-	 * @param fileName : le nom du fichier de configuration. Il sera nommé <i>fileName</i>.ini
+	 * Creates or load the configuration if it does exist or not.
+	 * @param fileName : configuration file's name. It will be named <i>fileName</i>.ini
 	 * @throws IOException
 	 */
 	public ConfigManager(String fileName) throws IOException {
@@ -54,9 +56,9 @@ public class ConfigManager{
 	}
 	
 	/**
-	 * @param sectionName : Section recherchée.
-	 * @param searched : Ligne recherchée.
-	 * @return La donnée à la ligne <i>searched</i>.
+	 * @param sectionName : researched section.
+	 * @param searched : researched line.
+	 * @return the data at the line <i>searched</i>.
 	 * @throws IOException
 	 */
 	public String getDataInSection(String sectionName, String searched) throws IOException{
@@ -64,9 +66,9 @@ public class ConfigManager{
 	}
 	
 	/**
-	 * @param sectionName : Section recherchée.
-	 * @param searched : Ligne recherchée.
-	 * @return La clé à la ligne <i>searched</i>.
+	 * @param sectionName : researched section.
+	 * @param searched : researched line.
+	 * @return the key to the line <i>searched</i>.
 	 * @throws IOException
 	 */
 	public String getKeyFromDataInSection(String sectionName, String searched) throws IOException{
@@ -74,18 +76,18 @@ public class ConfigManager{
 	}
 	
 	/**
-	 * @param sectionName : Le nom de la section recherchée.
-	 * @return Une liste des lignes de cette section.
+	 * @param sectionName : the name of the researched section.
+	 * @return A list of the lines of this section.
 	 * @throws IOException
 	 */
 	public ArrayList<String> getDataFromEntiereSection(String sectionName) throws IOException{
 		return  ConfigSection.getDatasFromEntiereSection(new BufferedReader(new FileReader(config)), sectionName);
 	}
 	
-	/** Enregistre des données en décalant les lignes suivantes.
-	 * @param sectionName : Section recherchée.
-	 * @param searched : Ligne à remplacée.
-	 * @param newString : La donnée à enregistrer à la ligne <i>searched</i>.
+	/** Saves datas by shifting the following lines.
+	 * @param sectionName : researched section.
+	 * @param searched : replaced line.
+	 * @param newString :the data saved at the line <i>searched</i>.
 	 * @throws IOException
 	 */
 	public void saveWithShift(String sectionName, String searched, String newString) throws IOException{
@@ -94,18 +96,18 @@ public class ConfigManager{
 
 	
 	/**
-	 * Enregistre des données dans le fichier de configuration.
-	 * @param sectionName : Le nom de la section dans laquelle se trouve les données.
-	 * @param searched : La ligne recherché où l'enregistrement sera effectué (Traduit en String). Celle ci ne sera pas écrasé, l'enregistrement s'effectura après.
-	 * @param newString : L'objet à enregistrer (Taduit en String) à la ligne <i>searched</i>.
+	 * Saves datas into the configuration file.
+	 * @param sectionName : The name of the section in which are located the datas.
+	 * @param searched : The researched line of the saveguard will be done (translated into a String). It won't be overwrite, the saving will be done after.
+	 * @param newString : The object to save (translated into a String) to the line <i>searched</i>.
 	 * @throws IOException
 	 */
 	public void saveData(String sectionName, Object searched, Object newString) throws IOException{
 		ConfigSection.writeDataInSection( config , sectionName , searched.toString() , newString.toString());	
 	}
 	
-	/** Remet/met une section avec ses valeurs par defauts
-	 * @param sectionName : Le nom de la section à écrire.
+	/** Put (again or not) a section with its default values.
+	 * @param sectionName : The name of the section to write.
 	 * @throws IOException
 	 */
 	public void setDefaultSection(String sectionName) throws IOException{
@@ -114,7 +116,7 @@ public class ConfigManager{
 	
 	
 	/**
-	 * Créer un fichier de configuration par défaut.
+	 * Creates a configuration file by default.
 	 * @throws IOException
 	 */
 	private void createDefaultConfig() throws IOException{
@@ -133,16 +135,16 @@ public class ConfigManager{
 	
 	
 	/**
-	 * Gestion des sections.
+	 * Class that manages sections.
 	 */
 	private static class ConfigSection {
 		
 		
 		/**
-		 * Créer d'une section.
-		 * @param file : Fichier cible.
-		 * @param sectionName : Nom de la section à créer.
-		 * @param content : Contenu à mettre à l'intérieur.
+		 * Method that creates a section
+		 * @param file : Target file.
+		 * @param sectionName : Name of the section to create.
+		 * @param content : Content to put inside.
 		 */
 		public static void createConfigSection(PrintWriter file, String sectionName, String[] content){
 			
@@ -155,10 +157,11 @@ public class ConfigManager{
 		
 		
 		/**
-		 * @param file : Fichier source.
-		 * @param sectionName : Section recherchée.
-		 * @param searched : Ligne recherchée.
-		 * @return La ligne complète.
+		 * Method that returns the researched line from the configuration file.
+		 * @param file : Source file.
+		 * @param sectionName : Researched section.
+		 * @param searched : Researched line.
+		 * @return The complete line.
 		 * @throws IOException
 		 */
 		public static String getDataFromSection(BufferedReader file, String sectionName, String searched) throws IOException{
@@ -177,6 +180,13 @@ public class ConfigManager{
 			return str;
 		}
 		
+		/**
+		 * @param file
+		 * @param sectionName
+		 * @param searched
+		 * @return String
+		 * @throws IOException
+		 */
 		public static String getKeyFromDataFromSection(BufferedReader file, String sectionName, String searched) throws IOException{
 			String line;	
 			String str = "";
@@ -194,9 +204,9 @@ public class ConfigManager{
 		}
 		
 		/**
-		 * @param file : Fichier source.
-		 * @param sectionName : Le nom de la section recherchée.
-		 * @return Une liste des lignes de cette section.
+		 * @param file : source file.
+		 * @param sectionName : The name of the researched section.
+		 * @return A list of this section's lines.
 		 * @throws IOException
 		 */
 		public static ArrayList<String> getDatasFromEntiereSection(BufferedReader file, String sectionName) throws IOException{
@@ -212,11 +222,11 @@ public class ConfigManager{
 			
 		}
 		
-		/** Ecrit dans une section et décale celle qui suivent (ici utilisé pour les scores).
-		 * @param file : Le fichier cible
-		 * @param sectionName : Le nom de la section
-		 * @param searched : La ligne recherchée.
-		 * @param newString : La donnée à enregistrer à la ligne <i>searched</i>.
+		/** Writes into a section and shifts the following ones (used there for the scores).
+		 * @param file : the target file
+		 * @param sectionName : the section's name.
+		 * @param searched : the researched line.
+		 * @param newString : the data saved at the line <i>searched</i>.
 		 * @throws IOException
 		 */
 		public static void writeDataAndShift(File file, String sectionName, String searched, String newString) throws IOException{
@@ -271,11 +281,11 @@ public class ConfigManager{
 		
 		
 		/**
-		 * Ecriture de données.
-		 * @param file : Fichier source et cible.
-		 * @param sectionName : Nom de la section dans laquelle sera enregistré les données.
-		 * @param searched : La ligne recherché.
-		 * @param newString : La donnée à enregistrer à la ligne <i>searched</i>.
+		 * Method allowing to write into a file.
+		 * @param file : source and target file.
+		 * @param sectionName : Name of the section in which will the datas be written.
+		 * @param searched : the researched line.
+		 * @param newString : The data saved at the line <i>searched</i>.
 		 * @throws IOException
 		 */
 		public static void writeDataInSection(File file, String sectionName, String searched, String newString) throws IOException{
@@ -315,9 +325,9 @@ public class ConfigManager{
 		}
 		
 
-		/** Remet/met une section avec ses valeurs par defauts
-		 * @param file : Le fichier cible.
-		 * @param sectionName : Le nom de la section à écrire.
+		/** Method that reset a section to its default values.
+		 * @param file : the target file.
+		 * @param sectionName : The name of the section to write.
 		 * @throws IOException
 		 */
 		public static void setDefaultSection(File file, String sectionName) throws IOException{

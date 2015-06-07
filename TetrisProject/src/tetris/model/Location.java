@@ -1,5 +1,10 @@
 package tetris.model;
 
+/**
+ * Class that represents the locations of the boxes.
+ * @author Sedara
+ *
+ */
 public class Location {
 
 	private final int row;
