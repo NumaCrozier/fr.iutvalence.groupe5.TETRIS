@@ -2,7 +2,7 @@ package tetris.controller;
 
 /**
  * Interface that creates contains the necessary methods between the model and the view.
- * @author Numa
+ * @author Sedara
  *
  */
 public interface Controller {

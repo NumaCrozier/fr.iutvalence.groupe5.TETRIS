@@ -1,25 +1,36 @@
 package tetris.view.buttons;
 
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 
 import tetris.view.Display;
 
-public class ButtonExit extends JButton implements ActionListener{
+/**
+ * @author Sedara
+ *
+ */
+public class ButtonExit extends TetrisButton implements ActionListener{
 	
-	private Display display;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 
 	public ButtonExit(Display display) {
-		super("Exit");
-		this.display = display;
+		super(display, "exit");
 		addActionListener(this);
+		setPreferredSize(new Dimension(300, 100));
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		display.getFrame().dispose();
+		display.getFrame().setState(JFrame.EXIT_ON_CLOSE);
 		
 	}
 

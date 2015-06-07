@@ -6,6 +6,10 @@ import javax.swing.JPanel;
 
 import tetris.view.Display;
 
+/**
+ * @author Sedara
+ *
+ */
 public class Board extends JPanel{
 	
 	/**

@@ -2,21 +2,25 @@ package tetris.view;
 
 import java.awt.Color;
 
+/**
+ * @author Sedara
+ *
+ */
 public enum BoxesColors {
 	
-	I(Color.RED),
-	O(Color.BLUE),
-	T(Color.GRAY),
-	L(Color.WHITE),
-	J(Color.MAGENTA),
-	Z(Color.GREEN),
-	S(Color.CYAN),
-	EMPTY(Color.BLACK);
+	I,
+	O,
+	T,
+	L,
+	J,
+	Z,
+	S,
+	EMPTY;
 	
 	private Color color;
 	
-	private BoxesColors(Color color) {
-		this.color = color;
+	private BoxesColors() {
+		this.color = null;
 	}
 	
 	public void setColor(Color color) {

@@ -4,18 +4,20 @@ import tetris.model.Game;
 
 /**
  * Class that's implemented from Controller. It's used as a link between the model and the view.
- * @author Numa
+ * @author Sedara
  *
  */
 public class ConsoleController implements Controller{
 	
 	private Game game;
 	
+	private ConfigManager config;
+	
 	/**
 	 * Basic constructor for ConsoleController.
 	 */
-	public ConsoleController() {
-		
+	public ConsoleController(ConfigManager config) {
+		this.config = config;
 	}
 
 	@Override
@@ -64,6 +66,10 @@ public class ConsoleController implements Controller{
 	public void pause() {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public ConfigManager getConfig() {
+		return config;
 	}
 	
 	

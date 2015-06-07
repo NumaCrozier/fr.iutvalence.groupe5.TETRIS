@@ -3,6 +3,10 @@ package tetris.view;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+/**
+ * @author Sedara
+ *
+ */
 public class TetrisKeyListener extends KeyAdapter{
 
 	private Display display;

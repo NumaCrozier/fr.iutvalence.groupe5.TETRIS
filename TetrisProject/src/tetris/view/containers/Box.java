@@ -9,6 +9,10 @@ import javax.swing.border.LineBorder;
 import tetris.model.Types;
 import tetris.view.BoxesColors;
 
+/**
+ * @author Sedara
+ *
+ */
 public class Box extends JLabel{
 	
 	/**

@@ -1,5 +1,9 @@
 package tetris.controller;
 
+import java.io.IOException;
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 import javax.swing.SwingUtilities;
 
 import tetris.model.Game;
@@ -8,7 +12,7 @@ import tetris.view.Display;
 
 /**
  * Class that redefines the methods required by the Controller interface. It is implemented from the Controller interface.
- * @author Numa
+ * @author Sedara
  *
  */
 public class SwingController implements Controller{
@@ -18,20 +22,40 @@ public class SwingController implements Controller{
 	
 	private Display display;
 	
+	private ConfigManager config;
+	
+	private Locale locale;
+	
+	private ResourceBundle bundle;
+	
 	/**
 	 * Method that allows to monitor the swing window.
 	 */
-	public SwingController() {
-		
+	public SwingController(ConfigManager config) {
+		this.config = config;
+		String lang = "";
+		try {
+			lang = config.getDataInSection(ConfigManager.SECTION_LANG, "current");
+		} catch (IOException e) {}
+		locale = new Locale(lang.toLowerCase(), lang.toUpperCase());
+		bundle = ResourceBundle.getBundle("TetrisLang", locale);
 	}
 	
 	
 	public void createNewGame(){
 		game = new Game();
 	}
+	
+	public String getString(String key){
+		return bundle.getString(key);
+	}
+	
+	public void setLanguage(String lang) {
+		locale = new Locale(lang.toLowerCase(), lang.toUpperCase());
+		bundle = ResourceBundle.getBundle("TetrisLang", locale);
+	}
 
 
-	@Override
 	public void startDisplay() {
 		display = new Display(this);
 		SwingUtilities.invokeLater(display);
@@ -104,6 +128,9 @@ public class SwingController implements Controller{
 		
 	}
 	
+	public ConfigManager getConfig() {
+		return config;
+	}
 	
 
 }

@@ -7,27 +7,28 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 import tetris.view.Display;
+import tetris.view.containers.LangPanel;
 
-/**
- * @author Sedara
- *
- */
-public class ButtonColors extends TetrisButton implements ActionListener{
+public class ButtonLang extends TetrisButton implements ActionListener{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	public ButtonColors(Display display) {
-		super(display, "colors");
+	public ButtonLang(Display display) {
+		super(display, "lang");
 		addActionListener(this);
 		setPreferredSize(new Dimension(300, 100));
-	}	
+		
+	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		display.getFrame().setContentPane(new LangPanel(display));
+		display.getFrame().revalidate();
 		
 	}
+	
+
 }

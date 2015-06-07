@@ -1,13 +1,20 @@
 package tetris.view.buttons;
 
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JButton;
 
 import tetris.view.Display;
+import tetris.view.containers.HighScores;
 
-public class ButtonScores extends JButton implements ActionListener{
+/**
+ * @author Sedara
+ *
+ */
+public class ButtonScores extends TetrisButton implements ActionListener{
 	
 	
 	/**
@@ -15,17 +22,19 @@ public class ButtonScores extends JButton implements ActionListener{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private Display display;
-
 	public ButtonScores(Display display) {
-		super("High Scores");
-		this.display = display;
+		super(display, "scores");
 		addActionListener(this);
+		setPreferredSize(new Dimension(300, 100));
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		try {
+			display.setScores(new HighScores(display));
+		} catch (IOException e1) {}
+		display.getFrame().setContentPane(display.getScores());
+		display.getFrame().revalidate();
 		
 	}
 

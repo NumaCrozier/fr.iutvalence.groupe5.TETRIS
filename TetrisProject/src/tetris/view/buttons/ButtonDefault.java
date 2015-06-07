@@ -8,26 +8,22 @@ import javax.swing.JButton;
 
 import tetris.view.Display;
 
-/**
- * @author Sedara
- *
- */
-public class ButtonColors extends TetrisButton implements ActionListener{
-
+public class ButtonDefault extends TetrisButton implements ActionListener{
+	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	public ButtonColors(Display display) {
-		super(display, "colors");
+		
+	public ButtonDefault(Display display) {
+		super(display, "default");
 		addActionListener(this);
-		setPreferredSize(new Dimension(300, 100));
-	}	
+	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
+
 }
