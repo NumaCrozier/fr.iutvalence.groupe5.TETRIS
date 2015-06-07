@@ -21,7 +21,7 @@ public class Game
 
 
 	/**
-	 * Method that "starts" the game by creating it's new player and it's game Board.
+	 * Method that "starts" the game by creating its new player and its game Board.
 	 */
 	public Game()
 	{
@@ -37,6 +37,10 @@ public class Game
 	}
 	
 	
+	/**
+	 * Method that creates the timer for the current game.
+	 * @return TimerTask
+	 */
 	private TimerTask createTimer(){
 		TimerTask timer = new TimerTask() {
 			

@@ -61,6 +61,7 @@ public class Tetriminos {
 			relativesBox[2]= new Box(new Location(position.getRow()-1,position.getColumn()));
 			relativesBox[3]= new Box(new Location(position.getRow()-2,position.getColumn()));
 			break;
+		//				The NONE is for tests.
 		//case NONE:
 		//	relativesBox[0]= new Box(new Position(position.getRow(),position.getColumn()));
 		//	relativesBox[1]= new Box(new Position(position.getRow(),position.getColumn()));
@@ -72,10 +73,19 @@ public class Tetriminos {
 		}
 	}
 	
-	public Box getRelativesBox(int n){
-		return this.relativesBox[n];
+	/**
+	 * Getter that returns the boxes that are relatives to a box.
+	 * @param boxNumero
+	 * @return Box
+	 */
+	public Box getRelativesBox(int boxNumero){
+		return this.relativesBox[boxNumero];
 	}
 	
+	/**
+	 * Getter that returns the type (the tetrimino) of the current box.
+	 * @return Types
+	 */
 	public Types getType() {
 		return type;
 	}

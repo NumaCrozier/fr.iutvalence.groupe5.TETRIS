@@ -3,6 +3,11 @@ package tetris.model;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class representing the game board.
+ * @author Numa
+ *
+ */
 public class Board {
 
 	private final static int NB_ROWS = 22;
@@ -38,6 +43,10 @@ public class Board {
 		this(NB_ROWS,NB_COLUMNS);
 	}
 	
+	/**
+	 * Collection that returns the played boxes into a list.
+	 * @return
+	 */
 	public List<Box> getPlayedBoxes(){
 		List<Box> list = new ArrayList<Box>();
 		for(int counterRows = 0 ; counterRows < NB_ROWS; counterRows++)
@@ -53,6 +62,10 @@ public class Board {
 	}
 	
 	
+	/**
+	 * Method allowing to set a tetrimino on the board by making the relatives Box around the first box having a tetrimino on it, depending on the tetrimino wanted.
+	 * @param tetrimino
+	 */
 	public void setTetrimino(Tetriminos tetrimino){
 		this.box[tetrimino.getRelativesBox(0).getBoxLocation().getRow()][tetrimino.getRelativesBox(0).getBoxLocation().getColumn()].setTetrimino(tetrimino);
 		this.box[tetrimino.getRelativesBox(1).getBoxLocation().getRow()][tetrimino.getRelativesBox(1).getBoxLocation().getColumn()].setTetrimino(tetrimino);
@@ -75,6 +88,12 @@ public class Board {
 		}
 	}
 	
+	/**
+	 * Method returning the box which is the next on the board (to make the tetrimino fall from the top of the board to the bottom of it).
+	 * @param direction
+	 * @param initialBox
+	 * @return Box
+	 */
 	public Box getNextBox(String direction, Box initialBox){
 		switch(direction){
 		case "bottom" : return getBottomBox(initialBox.getBoxLocation());
@@ -146,10 +165,18 @@ public class Board {
 		return str;
 	}
 	
+	/**
+	 * Getter that returns the number of row.
+	 * @return int
+	 */
 	public int getRows() {
 		return rows;
 	}
 	
+	/**
+	 * Method that returns the number of columns.
+	 * @return int
+	 */
 	public int getColumns() {
 		return columns;
 	}

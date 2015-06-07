@@ -7,7 +7,7 @@ public class Location {
 	private final int column;
 	
 	/**
-	 * Constructor parametered that creates a position.
+	 * Constructor parametered that creates a location.
 	 * @param row
 	 * @param column
 	 */
@@ -17,7 +17,7 @@ public class Location {
 	}
 
 	/**
-	 * Method allowing to get the column from a position.
+	 * Method allowing to get the column from a location.
 	 * @return
 	 */
 	public int getColumn() {
@@ -25,7 +25,7 @@ public class Location {
 	}
 
 	/**
-	 * Method allowing to get the row from a position.
+	 * Method allowing to get the row from a location.
 	 * @return
 	 */
 	public int getRow() {
