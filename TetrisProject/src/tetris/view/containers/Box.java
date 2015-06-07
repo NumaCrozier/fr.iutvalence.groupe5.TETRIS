@@ -10,7 +10,8 @@ import tetris.model.Types;
 import tetris.view.BoxesColors;
 
 /**
- * @author Sedara
+ * Class that represents the Box model class to the Swing interface.
+ * @author Numa
  *
  */
 public class Box extends JLabel{
@@ -20,6 +21,9 @@ public class Box extends JLabel{
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	/**
+	 * Class setting how have to be seen a box.
+	 */
 	public Box() {
 		setColor(null);
 		setOpaque(true);
@@ -27,6 +31,10 @@ public class Box extends JLabel{
 		setBorder(new LineBorder(Color.BLACK));
 	}
 	
+	/**
+	 * Class tat links the types enumeration (the tetriminos) to the color they will have during a game.
+	 * @param type
+	 */
 	public void setColor(Types type){
 		
 		BoxesColors color;

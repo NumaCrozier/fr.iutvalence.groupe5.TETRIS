@@ -16,18 +16,20 @@ import tetris.view.buttons.ButtonScores;
 import tetris.view.buttons.TetrisButton;
 
 /**
- * @author Sedara
+ * Class that represents the main menu, the root of the program where you arrive after launching it.
+ * @author Numa
  *
  */
 public class HomeMenu extends JPanel{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	private Display display;
 	
+	/**
+	 * Constructor that sets up the main menu before displaying it.
+	 * @param display
+	 */
 	public HomeMenu(Display display) {
 		super();
 		this.display = display;

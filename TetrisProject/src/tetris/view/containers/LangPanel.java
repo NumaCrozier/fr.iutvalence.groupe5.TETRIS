@@ -19,14 +19,12 @@ import tetris.view.buttons.ButtonHome;
 
 
 /**
- * @author Sedara
+ * Class that represents the languages panel on the Swing interface.
+ * @author Numa
  *
  */
 public class LangPanel extends JSplitPane implements ListSelectionListener{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	private Display display;
@@ -34,6 +32,10 @@ public class LangPanel extends JSplitPane implements ListSelectionListener{
     private JList<String> jl;
     private ButtonHome home;
 	
+	/**
+	 * Constructor that sets up the languages panel before displaying it.
+	 * @param display
+	 */
 	public LangPanel(Display display) {
 		super(JSplitPane.VERTICAL_SPLIT);
         List<String> list = null;

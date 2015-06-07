@@ -12,7 +12,8 @@ import tetris.view.containers.HighScores;
 import tetris.view.containers.HomeMenu;
 
 /**
- * @author Sedara
+ * Class that's used to monitor the display on the Swing interface.
+ * @author Numa
  *
  */
 public class Display implements Runnable{

@@ -5,7 +5,8 @@ import javax.swing.JPanel;
 import tetris.view.Display;
 
 /**
- * @author Sedara
+ * Class that represents the game class from model to Swing interface.
+ * @author Numa
  *
  */
 public class Game extends JPanel{
@@ -17,6 +18,10 @@ public class Game extends JPanel{
 	
 	private Board board;
 	
+	/**
+	 * Constructor that sets up a game before its launching.
+	 * @param display
+	 */
 	public Game(Display display) {
 		super();
 		int tab[] = display.getController().getBoardDimensions();
@@ -25,6 +30,9 @@ public class Game extends JPanel{
 		
 	}
 	
+	/**
+	 * Call to the method used to refresh the board on the Swing interface.
+	 */
 	public void refresh(){
 		board.refreshPanel();
 	}

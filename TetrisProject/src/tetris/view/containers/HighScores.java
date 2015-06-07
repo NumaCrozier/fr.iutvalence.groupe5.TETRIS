@@ -17,19 +17,22 @@ import tetris.view.buttons.ButtonDefault;
 import tetris.view.buttons.ButtonHome;
 
 /**
- * @author Sedara
+ * Class that monitores the system of highscores.
+ * @author Numa
  *
  */
 public class HighScores extends JPanel{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	private JLabel[][] tableau = new JLabel[10][4];
 	private Display display;
 	
+	/**
+	 * Constructor that sets up the highscores windows on the Swing interface.
+	 * @param display
+	 * @throws IOException
+	 */
 	public HighScores(Display display) throws IOException{
 		super();
 		this.display = display;
@@ -111,6 +114,10 @@ public class HighScores extends JPanel{
 		add(new ButtonHome(display), gbc);
 	}
 	
+	/**
+	 * Method allowing to refresh the highscores panel.
+	 * @throws IOException
+	 */
 	public void refresh() throws IOException{
 		
 		String str;

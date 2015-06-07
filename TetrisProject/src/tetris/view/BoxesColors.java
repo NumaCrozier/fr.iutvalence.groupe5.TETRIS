@@ -3,7 +3,8 @@ package tetris.view;
 import java.awt.Color;
 
 /**
- * @author Sedara
+ * Enumeration that contains the colors the tetriminos will get on the Swing interface.
+ * @author Numa
  *
  */
 public enum BoxesColors {
