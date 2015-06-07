@@ -1,5 +1,10 @@
 package tetris.model;
 
+/**
+ * Class that represents a tetrimino.
+ * @author Sedara
+ *
+ */
 public class Tetriminos {
 	
 	private final Types type;

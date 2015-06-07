@@ -1,5 +1,10 @@
 package tetris.model;
 
+/**
+ * Class that represents the current player.
+ * @author Sedara
+ *
+ */
 public class Player {
 
 	private final String nickname;

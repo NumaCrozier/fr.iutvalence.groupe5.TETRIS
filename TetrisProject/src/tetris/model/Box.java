@@ -1,5 +1,10 @@
 package tetris.model;
 
+/**
+ * Class that represents the boxes into the game grid.
+ * @author Sedara
+ *
+ */
 public class Box {
 
 	private final Location boxLocation;

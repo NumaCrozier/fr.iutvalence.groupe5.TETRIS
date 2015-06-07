@@ -5,7 +5,7 @@ import java.awt.event.KeyEvent;
 
 /**
  * Class that will be used to monitor the action from the keyboard to the swing interface.
- * @author Numa
+ * @author Sedara
  * 
  */
 public class TetrisKeyListener extends KeyAdapter{

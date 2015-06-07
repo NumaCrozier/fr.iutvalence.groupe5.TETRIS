@@ -2,8 +2,12 @@ package tetris.model;
 
 import java.util.TimerTask;
 
-public class Game 
-{
+/**
+ * Class that represents the game launched in itself.
+ * @author Sedara
+ *
+ */
+public class Game {
 
 	private Player player;
 	

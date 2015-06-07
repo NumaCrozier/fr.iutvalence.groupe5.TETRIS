@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  * Class representing the game board.
- * @author Numa
+ * @author Sedara
  *
  */
 public class Board {
