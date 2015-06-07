@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.io.IOException;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 import tetris.controller.ConfigManager;
 import tetris.controller.SwingController;
@@ -86,8 +85,8 @@ public class Display implements Runnable{
 	}
 	
 	public void setKeyListener(TetrisKeyListener keyListener) {
-		if(keyListener != null)
-			frame.removeKeyListener(keyListener);
+		if(this.keyListener != null)
+			frame.removeKeyListener(this.keyListener);
 		this.keyListener = keyListener;
 		frame.addKeyListener(keyListener);
 	}
