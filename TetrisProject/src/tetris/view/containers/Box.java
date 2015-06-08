@@ -11,21 +11,18 @@ import tetris.view.BoxesColors;
 
 /**
  * Class that represents the Box model class to the Swing interface.
- * @author Numa
+ * @author Sedara
  *
  */
 public class Box extends JLabel{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	/**
 	 * Class setting how have to be seen a box.
 	 */
 	public Box() {
-		setColor(null);
+		setBackground(BoxesColors.EMPTY.getColor());
 		setOpaque(true);
 		setPreferredSize(new Dimension(40,40));
 		setBorder(new LineBorder(Color.BLACK));
@@ -53,6 +50,11 @@ public class Box extends JLabel{
 		}catch(NullPointerException e){color = BoxesColors.EMPTY;}
 		
 		setBackground(color.getColor());
+	}
+
+	public void setColor(Color color) {
+		setBackground(color);
+		
 	}
 	
 }

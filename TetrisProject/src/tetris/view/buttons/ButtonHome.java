@@ -26,7 +26,6 @@ public class ButtonHome extends TetrisButton implements ActionListener{
 		display.getFrame().setContentPane(display.getHomeMenu());
 		display.setKeyListener(null);
 		display.getFrame().revalidate();
-		
 	}
 
 }

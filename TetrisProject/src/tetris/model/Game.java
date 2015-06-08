@@ -1,10 +1,11 @@
 package tetris.model;
 
+import java.util.Timer;
 import java.util.TimerTask;
 
 /**
  * Class that represents the game launched in itself.
- * @author Sedara
+ * @author t3hr1s
  *
  */
 public class Game {
@@ -35,7 +36,8 @@ public class Game {
 	}
 	
 	public boolean play(){
-		
+		Timer timer = new Timer();
+		timer.schedule(createTimer(), 0, 500);
 		
 		return false;
 	}

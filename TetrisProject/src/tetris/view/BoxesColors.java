@@ -2,6 +2,8 @@ package tetris.view;
 
 import java.awt.Color;
 
+import tetris.model.Types;
+
 /**
  * Enumeration that contains the colors the tetriminos will get on the Swing interface.
  * @author Sedara
@@ -30,6 +32,20 @@ public enum BoxesColors {
 	
 	public Color getColor() {
 		return color;
+	}
+	
+	public static BoxesColors getEquivalent(Types type){
+		
+		switch(type){
+		case I : return I;
+		case O : return O;
+		case T : return T;
+		case L : return L;
+		case J : return J;
+		case S : return S;
+		case Z : return Z;
+		default : return EMPTY;
+		}
 	}
 
 }

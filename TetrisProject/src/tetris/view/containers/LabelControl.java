@@ -22,10 +22,10 @@ public class LabelControl extends JLabel implements MouseListener{
 	private static final long serialVersionUID = 1L;
 	private String key;
 	private Display display;
-	private ControlsPanel controlsPanel;
+	private ControlsMenu controlsPanel;
 	
 	
-	public LabelControl(Display display, String key, ControlsPanel controlsPanel) throws NumberFormatException, IOException {
+	public LabelControl(Display display, String key, ControlsMenu controlsPanel) throws NumberFormatException, IOException {
 		super(KeyEvent.getKeyText(Integer.valueOf(display.getController().getConfig().getDataInSection(ConfigManager.SECTION_CONTROLS, key))));
 		this.display = display;
 		this.key = key;	

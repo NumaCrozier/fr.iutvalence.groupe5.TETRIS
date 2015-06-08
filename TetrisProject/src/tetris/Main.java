@@ -1,6 +1,7 @@
 package tetris;
 
 import java.io.IOException;
+import java.util.Scanner;
 
 import tetris.controller.ConfigManager;
 import tetris.controller.Controller;
@@ -27,6 +28,8 @@ public class Main
 		
 		controller.createNewGame();
 		controller.startDisplay();
+		
+		
 		
 	}
 }

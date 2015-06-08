@@ -7,7 +7,6 @@ import java.awt.GridBagLayout;
 import java.io.IOException;
 
 import javax.swing.BorderFactory;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
@@ -17,13 +16,13 @@ import tetris.view.Display;
 import tetris.view.buttons.ButtonDefault;
 import tetris.view.buttons.ButtonHome;
 
-public class ControlsPanel extends JPanel{
+public class ControlsMenu extends JPanel{
 	
 	private static final long serialVersionUID = 1L;
 	private static LabelControl[] modifiers = new LabelControl[5];
 	private static JLabel[] controls = new JLabel[5];
 	
-	public ControlsPanel(Display display) throws IOException{
+	public ControlsMenu(Display display) throws IOException{
 		super();
 		setLayout(new GridBagLayout());
 		GridBagConstraints gbc = new GridBagConstraints();

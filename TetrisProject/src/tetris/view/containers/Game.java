@@ -25,7 +25,7 @@ public class Game extends JPanel{
 	public Game(Display display) {
 		super();
 		int tab[] = display.getController().getBoardDimensions();
-		board = new Board(display, tab[0], tab[1]);
+		board = new Board(display, tab[0], tab[1], false);
 		add(board);
 		
 	}
@@ -34,7 +34,7 @@ public class Game extends JPanel{
 	 * Call to the method used to refresh the board on the Swing interface.
 	 */
 	public void refresh(){
-		board.refreshPanel();
+		board.refreshGamingPanel();
 	}
 	
 

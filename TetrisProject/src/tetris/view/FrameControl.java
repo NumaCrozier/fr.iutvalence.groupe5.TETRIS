@@ -96,6 +96,7 @@ public class FrameControl extends JFrame implements KeyListener, WindowListener{
 
 	@Override
 	public void windowClosed(WindowEvent e) {
+		setState(EXIT_ON_CLOSE);
 		display.getFrame().toFront();
 		display.getFrame().setEnabled(true);
 		

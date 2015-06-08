@@ -37,7 +37,7 @@ public class Display implements Runnable{
 		
 		frame.setContentPane(homeMenu);
 		frame.setTitle("Tetris");
-		frame.setSize(430, 675);
+		frame.setSize(440, 900);
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

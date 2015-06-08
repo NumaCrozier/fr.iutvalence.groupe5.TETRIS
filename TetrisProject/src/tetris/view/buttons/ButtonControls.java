@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 import tetris.view.Display;
-import tetris.view.containers.ControlsPanel;
+import tetris.view.containers.ControlsMenu;
 
 public class ButtonControls extends TetrisButton implements ActionListener{
 		
@@ -24,7 +24,7 @@ public class ButtonControls extends TetrisButton implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		try {
-			display.getFrame().setContentPane(new ControlsPanel(display));
+			display.getFrame().setContentPane(new ControlsMenu(display));
 		} catch (IOException e1) {}
 		display.getFrame().revalidate();
 		

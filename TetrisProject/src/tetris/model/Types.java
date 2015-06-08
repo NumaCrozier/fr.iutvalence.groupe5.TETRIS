@@ -8,12 +8,12 @@ package tetris.model;
 public enum Types {
 
 	I,
-	O,
-	T,
+	S,
 	L,
-	J,
+	T,
+	O,
 	Z,
-	S;
+	J;	
 	//NONE;
 
 

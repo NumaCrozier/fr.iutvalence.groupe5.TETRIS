@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import tetris.view.Display;
+import tetris.view.containers.ColorsMenu;
 
 /**
  * @author Sedara
@@ -25,7 +26,9 @@ public class ButtonColors extends TetrisButton implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		display.setBoxesColor();
+		display.getFrame().setContentPane(new ColorsMenu(display));
+		display.getFrame().revalidate();
 		
 	}
 }
