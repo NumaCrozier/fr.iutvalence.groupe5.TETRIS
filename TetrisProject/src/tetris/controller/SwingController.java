@@ -169,13 +169,14 @@ public class SwingController implements Controller{
 	public void moveTetriminoForward() 
 	{
 		
+		game.moveTetriminoForward();
 	}
 
 
 	@Override
 	public void moveTetriminoRight() 
 	{
-
+		game.moveTetriminoRight();
 	}
 
 
@@ -183,7 +184,7 @@ public class SwingController implements Controller{
 	@Override
 	public void moveTetriminoLeft() 
 	{
-		
+		game.moveTetriminoLeft();
 	}
 
 

@@ -120,10 +120,6 @@ public class Game {
 	
 	private boolean forward()
 	{
-
-
-
-
 		return true;
 	}
 
