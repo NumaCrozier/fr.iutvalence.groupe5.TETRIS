@@ -50,20 +50,55 @@ public class SwingController implements Controller{
 		} catch (IOException e) {}
 		locale = new Locale(lang.toLowerCase(), lang.toUpperCase());
 		bundle = ResourceBundle.getBundle("TetrisLang", locale);
-		this.playSound();
+		this.playMusic();
 	}
 
 	/**
 	 * Method that allows to launch the music
 	 */
-	public void playSound() {
+	public void playMusic() {
 	    try {
 	        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("musics/tetris_themeA_loop.wav").getAbsoluteFile());
 	        Clip clip = AudioSystem.getClip();
 	        clip.open(audioInputStream);
 	        clip.start();
-	        clip.loop(
-	        clip.LOOP_CONTINUOUSLY);
+	        clip.loop(clip.LOOP_CONTINUOUSLY);
+	    } catch(Exception ex) {
+	        System.out.println("Error with playing sound.");
+	        ex.printStackTrace();
+	    }
+	}
+	
+	public void horizontalSoundEffect() {
+	    try {
+	        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("soundEffects/horizontalSoundEffect.wav").getAbsoluteFile());
+	        Clip clip = AudioSystem.getClip();
+	        clip.open(audioInputStream);
+	        clip.start();
+	    } catch(Exception ex) {
+	        System.out.println("Error with playing sound.");
+	        ex.printStackTrace();
+	    }
+	}
+
+	public void verticalSoundEffect() {
+	    try {
+	        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("musics/verticalSoundEffect.wav").getAbsoluteFile());
+	        Clip clip = AudioSystem.getClip();
+	        clip.open(audioInputStream);
+	        clip.start();
+	    } catch(Exception ex) {
+	        System.out.println("Error with playing sound.");
+	        ex.printStackTrace();
+	    }
+	}
+	
+	public void tetrisSoundEffect() {
+	    try {
+	        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("musics/tetrisSoundEffect.wav").getAbsoluteFile());
+	        Clip clip = AudioSystem.getClip();
+	        clip.open(audioInputStream);
+	        clip.start();
 	    } catch(Exception ex) {
 	        System.out.println("Error with playing sound.");
 	        ex.printStackTrace();
