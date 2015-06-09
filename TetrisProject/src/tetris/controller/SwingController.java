@@ -162,53 +162,19 @@ public class SwingController implements Controller{
 	public void rotateTetrimino() 
 	{
 
-
-
 	}
 
 
 	@Override
 	public void moveTetriminoForward() 
 	{
-		try
-		{
-		List<Box> oldBoxesList = new ArrayList<Box>();
-		List<Box> newBoxesList = new ArrayList<Box>();
-		for(int counter = 0 ; counter < 4 ; counter++)
-		{
-			oldBoxesList.add(this.game.getBoard().getPlayedBoxes().get(counter));
-			this.game.getBoard().setTetrimino(null);
-			newBoxesList.add(new Box(new Location(oldBoxesList.get(counter).getBoxLocation().getRow()+1, oldBoxesList.get(counter).getBoxLocation().getColumn())));
-			this.game.getBoard().setTetrimino(new Tetriminos(oldBoxesList.get(counter).getTetrimino().getType(), newBoxesList.get(counter).getBoxLocation()));
-		}
-		}
-		catch (ArrayIndexOutOfBoundsException e)
-		{
-			return;
-		}
-
+		
 	}
 
 
 	@Override
 	public void moveTetriminoRight() 
 	{
-		try 
-		{
-			List<Box> oldBoxesList = new ArrayList<Box>();
-			List<Box> newBoxesList = new ArrayList<Box>();
-			for(int counter = 0 ; counter < 4 ; counter++)
-			{
-				oldBoxesList.add(this.game.getBoard().getPlayedBoxes().get(counter));
-				this.game.getBoard().setTetrimino(null);
-				newBoxesList.add(new Box(new Location(oldBoxesList.get(counter).getBoxLocation().getRow(), oldBoxesList.get(counter).getBoxLocation().getColumn()+1)));
-				this.game.getBoard().setTetrimino(new Tetriminos(oldBoxesList.get(counter).getTetrimino().getType(), newBoxesList.get(counter).getBoxLocation()));
-			}
-		} 
-		catch (ArrayIndexOutOfBoundsException e) 
-		{
-			return;
-		}
 
 	}
 
@@ -217,22 +183,7 @@ public class SwingController implements Controller{
 	@Override
 	public void moveTetriminoLeft() 
 	{
-		try
-		{
-		List<Box> oldBoxesList = new ArrayList<Box>();
-		List<Box> newBoxesList = new ArrayList<Box>();
-		for(int counter = 0 ; counter < 4 ; counter++)
-		{
-			oldBoxesList.add(this.game.getBoard().getPlayedBoxes().get(counter));
-			this.game.getBoard().setTetrimino(null);
-			newBoxesList.add(new Box(new Location(oldBoxesList.get(counter).getBoxLocation().getRow(), oldBoxesList.get(counter).getBoxLocation().getColumn()-1)));
-			this.game.getBoard().setTetrimino(new Tetriminos(oldBoxesList.get(counter).getTetrimino().getType(), newBoxesList.get(counter).getBoxLocation()));
-		}
-		}
-		catch (ArrayIndexOutOfBoundsException e)
-		{
-			return;
-		}
+		
 	}
 
 

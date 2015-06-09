@@ -83,20 +83,20 @@ public class Board {
 		{
 			for(int counterColumns = 0 ; counterColumns < NB_COLUMNS; counterColumns++)
 			{
-				//Box emptyBox = new Box(new Position(counterBoxRows , counterBoxColumns));
 				this.box[counterRows][counterColumns] = new Box(new Location(counterRows, counterColumns));
 			}
 		}
 	}
 	
 	/**
-	 * Method returning the box which is the next on the board (to make the tetrimino fall from the top of the board to the bottom of it).
+	 * Method returning the box which is the next on the board (depending on the direction you want to get the box from and the box chosed first).
 	 * @param direction
 	 * @param initialBox
 	 * @return Box
 	 */
 	public Box getNextBox(String direction, Box initialBox){
-		switch(direction){
+		switch(direction)
+		{
 		case "bottom" : return getBottomBox(initialBox.getBoxLocation());
 		case "upper" : return getUpperBox(initialBox.getBoxLocation());
 		case "left" : return getLeftBox(initialBox.getBoxLocation());
@@ -170,7 +170,8 @@ public class Board {
 	 * Getter that returns the number of row.
 	 * @return int
 	 */
-	public int getRows() {
+	public int getRows() 
+	{
 		return rows;
 	}
 	
@@ -178,7 +179,8 @@ public class Board {
 	 * Method that returns the number of columns.
 	 * @return int
 	 */
-	public int getColumns() {
+	public int getColumns() 
+	{
 		return columns;
 	}
 
