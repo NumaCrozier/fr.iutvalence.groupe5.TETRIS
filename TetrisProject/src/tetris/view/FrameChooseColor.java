@@ -18,6 +18,10 @@ import tetris.view.buttons.ButtonCancel;
 import tetris.view.containers.Board;
 
 
+/**
+ * @author Sedara
+ *
+ */
 public class FrameChooseColor extends JFrame implements WindowListener{
 
 	private static final long serialVersionUID = 1L;

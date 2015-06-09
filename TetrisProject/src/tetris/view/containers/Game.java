@@ -1,32 +1,68 @@
 package tetris.view.containers;
 
-import javax.swing.JPanel;
+import java.awt.Dimension;
+import java.awt.event.KeyEvent;
+import java.io.IOException;
 
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JSplitPane;
+
+import tetris.controller.ConfigManager;
 import tetris.view.Display;
+import tetris.view.buttons.ButtonHome;
 
 /**
  * Class that represents the game class from model to Swing interface.
- * @author Numa
+ * @author Sedara
  *
  */
-public class Game extends JPanel{
+public class Game extends JSplitPane{
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private Board board;
+	private final Board board;
+	
+	private final Board nextTetrimino;
+	
+	private final JLabel infoGame;
+	
+	private Display display;
 	
 	/**
 	 * Constructor that sets up a game before its launching.
 	 * @param display
 	 */
 	public Game(Display display) {
-		super();
+		super(JSplitPane.HORIZONTAL_SPLIT);
+		this.display = display;
+		JSplitPane jSplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+		jSplitPane.setDividerSize(0);
+		nextTetrimino = new Board(display, 5, 5, false);
+		JSplitPane jsp = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+		JPanel jp = new JPanel();
+		infoGame = new JLabel();
+		jsp.add(infoGame);
+		jp.add(new ButtonHome(display));
+		
+		jsp.add(jp);
+		jsp.setResizeWeight(0.9);
+		jsp.setDividerSize(0);
+		jSplitPane.add(nextTetrimino);
+		jSplitPane.add(jsp);
 		int tab[] = display.getController().getBoardDimensions();
+		JPanel jPanel = new JPanel();
 		board = new Board(display, tab[0], tab[1], false);
-		add(board);
+		jSplitPane.setPreferredSize(new Dimension(40*5,40*5));
+		add(jSplitPane);
+		jPanel.add(board);
+		add(jPanel);
+		setDividerSize(0);
+		setInfoText(0,0);
+		
 		
 	}
 	
@@ -35,6 +71,27 @@ public class Game extends JPanel{
 	 */
 	public void refresh(){
 		board.refreshGamingPanel();
+	}
+	
+	public Board getNextTetrimino() {
+		return nextTetrimino;
+	}
+	
+	
+	public void setInfoText(int score, int tetris){
+		String str = "";
+		try {
+			str = "<html>"+display.getController().getString("score")+" : " + score +
+					"<br> Tetris : " + tetris +
+					"<br><br><br><br>" + display.getController().getString("setpause1") + " [" + 
+					KeyEvent.getKeyText(Integer.parseInt(display.getController().getConfig().getDataInSection(ConfigManager.SECTION_CONTROLS, "pause"))) + "] " +
+					display.getController().getString("setpause2") +
+					"</html>";
+		} catch (IOException e) {}		
+		
+		
+		infoGame.setText(str);
+		
 	}
 	
 

@@ -32,7 +32,7 @@ public class ButtonPlay extends TetrisButton implements ActionListener{
 		display.setGame(new Game(display));
 		display.getFrame().setContentPane(display.getGame());
 		int tab[] = display.getController().getBoardDimensions();
-		display.getFrame().setSize(tab[1]*40+40, tab[0]*40+40);
+		display.getFrame().setSize(tab[1]*40+40 +40*5, tab[0]*40+40);
 		display.getFrame().setLocationRelativeTo(null);
 		display.getFrame().revalidate();
 		display.setKeyListener(new TetrisKeyListener(display));

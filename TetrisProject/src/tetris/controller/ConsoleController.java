@@ -10,14 +10,11 @@ import tetris.model.Game;
 public class ConsoleController implements Controller{
 	
 	private Game game;
-	
-	private ConfigManager config;
-	
+		
 	/**
 	 * Basic constructor for ConsoleController.
 	 */
-	public ConsoleController(ConfigManager config) {
-		this.config = config;
+	public ConsoleController() {
 	}
 
 	@Override
@@ -30,11 +27,6 @@ public class ConsoleController implements Controller{
 	public void startDisplay() {
 		System.out.println(game.getBoard().toString());
 		
-	}
-
-	
-	public ConfigManager getConfig() {
-		return config;
 	}
 
 	@Override
