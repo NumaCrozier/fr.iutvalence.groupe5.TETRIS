@@ -11,6 +11,7 @@ import javax.swing.JSplitPane;
 import tetris.controller.ConfigManager;
 import tetris.view.Display;
 import tetris.view.buttons.ButtonHome;
+import tetris.view.buttons.ButtonMusic;
 
 /**
  * Class that represents the game class from model to Swing interface.
@@ -47,6 +48,7 @@ public class Game extends JSplitPane{
 		infoGame = new JLabel();
 		jsp.add(infoGame);
 		jp.add(new ButtonHome(display));
+		jp.add(new ButtonMusic(display));
 		
 		jsp.add(jp);
 		jsp.setResizeWeight(0.9);

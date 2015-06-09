@@ -36,6 +36,7 @@ public class ButtonPlay extends TetrisButton implements ActionListener{
 		display.getFrame().setLocationRelativeTo(null);
 		display.getFrame().revalidate();
 		display.setKeyListener(new TetrisKeyListener(display));
+		display.getController().playMusic();
 	}
 
 }
