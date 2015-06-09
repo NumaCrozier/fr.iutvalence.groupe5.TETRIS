@@ -127,7 +127,7 @@ public class Game {
 		Location newLocation;
 		int x;
 		int y;
-		temporaryList.add(this.board.getPlayedBoxes().get(o));
+		temporaryList.add(this.board.getPlayedBoxes().get(0));
 
 		for(int counter = 0 ; counter < 4 ; counter++)
 		{
@@ -137,21 +137,61 @@ public class Game {
 				x = newLocation.getRow()-originalLocation.getRow();
 				y = newLocation.getColumn()-originalLocation.getColumn();
 				temporaryList.add(board.getBox(originalLocation.getRow()+y, originalLocation.getColumn()-x));
-				if(temporaryList.get(counter).getTetrimino().getType()!= null)
+				if(temporaryList.get(counter).getTetrimino().getType()!= null && (temporaryList.get(counter).getState() != States.PLAYED))
 					return;
 			}
-			catch{ArrayIndexOutOfBoundsException e)
+			catch(ArrayIndexOutOfBoundsException e)
 			{
 				return;
 			}
 			}
 			for(int counter = 0; counter < 4; counter++)
 			{
-			
+			this.board.getPlayedBoxes().get(counter).setTetrimino(null);
+			this.board.getPlayedBoxes().get(counter).setState(States.EMPTY);
 			}
-		}
-	}
+			for(int counter = 0; counter < 4; counter++)
+			{
+				temporaryList.get(counter).setTetrimino(tetrimino);;
+				temporaryList.get(counter).setState(States.PLAYED);
+			}
 
+		}
+	
+
+	 public static void rotateBlock() throws IOException{
+		  // rot90 (0  -1)
+		  //       (1   0)
+		  
+		   ArrayList<Case> tempList = new ArrayList<Case>();
+		   Position positionBase = list.get(0).getPosition();
+		   Position position;
+		   int x,y;
+		   tempList.add(list.get(o));
+		   for(int i=1;i<4;i++){   
+		    try{
+		    position = list.get(i).getPosition();
+		    x = position.getX()-positionBase.getX();
+		    y = position.getY()-positionBase.getY();
+		    tempList.add(champs.getCase(positionBase.getX()+y,positionBase.getY()-x));
+		    if(tempList.get(i).getType() != null && !tempList.get(i).isPlaying())
+		     return;
+		    }catch(ArrayIndexOutOfBoundsException e){return;};
+		   }
+		   
+		   for(int i=0;i<4;i++){
+		    list.get(i).setType(null);
+		    list.get(i).setPlaying(false);
+		   }
+		   for(int i=0;i<4;i++){
+		    tempList.get(i).setType(type);
+		    tempList.get(i).setPlaying(true);
+		   }
+		   list = tempList;
+		   TaskDisplay.gamePanel.setCasesColor(TaskDisplay.gamePanel.getTableau(),champs.getX(),champs.getY());
+		  
+		  
+		 }
 
 	private boolean forward()
 	{
