@@ -1,5 +1,6 @@
 package tetris.model;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
@@ -55,11 +56,9 @@ public class Game {
 	{
 		TimerTask timer = new TimerTask() 
 		{
-
 			@Override
 			public void run() {
-
-
+				moveTetriminoForward();
 			}
 		};
 
@@ -122,6 +121,7 @@ public class Game {
 	public void rotateTetrimino() throws IOException{
 
 		ArrayList<Box> temporaryList = new ArrayList<Box>();
+		ArrayList<Box> temporaryTetriminosList = new ArrayList<Box>();
 
 		Location originalLocation = this.board.getPlayedBoxes().get(0).getBoxLocation();
 		Location newLocation;
@@ -145,14 +145,18 @@ public class Game {
 				return;
 			}
 			}
+		
 			for(int counter = 0; counter < 4; counter++)
 			{
+			temporaryTetriminosList.add(this.board.getPlayedBoxes().get(counter));
 			this.board.getPlayedBoxes().get(counter).setTetrimino(null);
 			this.board.getPlayedBoxes().get(counter).setState(States.EMPTY);
 			}
+			
 			for(int counter = 0; counter < 4; counter++)
 			{
-				temporaryList.get(counter).setTetrimino(tetrimino);;
+				
+				temporaryList.get(counter).setTetrimino(temporaryTetriminosList.get(counter).getTetrimino());
 				temporaryList.get(counter).setState(States.PLAYED);
 			}
 
