@@ -2,7 +2,7 @@ package tetris.model;
 
 /**
  * Class that represents the current player.
- * @author Sedara
+ * @author Numa
  *
  */
 public class Player {

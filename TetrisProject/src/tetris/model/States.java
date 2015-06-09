@@ -2,7 +2,7 @@ package tetris.model;
 
 /**
  * Enumeration that contains every box states.
- * @author Sedara
+ * @author th3r1s
  *
  */
 public enum States {

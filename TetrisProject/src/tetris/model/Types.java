@@ -2,7 +2,7 @@ package tetris.model;
 
 /**
  * Enumeration that contains every type of tetrimino.
- * @author Sedara
+ * @author Numa
  *
  */
 public enum Types {

@@ -2,7 +2,7 @@ package tetris.model;
 
 /**
  * Class that represents a tetrimino.
- * @author Sedara
+ * @author th3r1s
  *
  */
 public class Tetriminos {

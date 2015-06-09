@@ -15,12 +15,14 @@ public class Game {
 	private Board board;
 	
 	
-	public Board getBoard() {
+	public Board getBoard() 
+	{
 		return board;
 	}
 
 
-	public void setBoard(Board board) {
+	public void setBoard(Board board) 
+	{
 		this.board = board;
 	}
 
@@ -47,8 +49,10 @@ public class Game {
 	 * Method that creates the timer for the current game.
 	 * @return TimerTask
 	 */
-	private TimerTask createTimer(){
-		TimerTask timer = new TimerTask() {
+	private TimerTask createTimer()
+	{
+		TimerTask timer = new TimerTask() 
+		{
 			
 			@Override
 			public void run() {
@@ -60,7 +64,9 @@ public class Game {
 		return timer;
 	}
 	
-	private boolean forward(){
+	
+	private boolean forward()
+	{
 		
 		
 		

@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  * Class representing the game board.
- * @author Sedara
+ * @author th3r1s
  *
  */
 public class Board {
@@ -45,7 +45,7 @@ public class Board {
 	
 	/**
 	 * Collection that returns the played boxes into a list.
-	 * @return
+	 * @return List<Box>
 	 */
 	public List<Box> getPlayedBoxes(){
 		List<Box> list = new ArrayList<Box>();
@@ -66,7 +66,8 @@ public class Board {
 	 * Method allowing to set a tetrimino on the board by making the relatives Box around the first box having a tetrimino on it, depending on the tetrimino wanted.
 	 * @param tetrimino
 	 */
-	public void setTetrimino(Tetriminos tetrimino){
+	public void setTetrimino(Tetriminos tetrimino)
+	{
 		this.box[tetrimino.getRelativesBox(0).getBoxLocation().getRow()][tetrimino.getRelativesBox(0).getBoxLocation().getColumn()].setTetrimino(tetrimino);
 		this.box[tetrimino.getRelativesBox(1).getBoxLocation().getRow()][tetrimino.getRelativesBox(1).getBoxLocation().getColumn()].setTetrimino(tetrimino);
 		this.box[tetrimino.getRelativesBox(2).getBoxLocation().getRow()][tetrimino.getRelativesBox(2).getBoxLocation().getColumn()].setTetrimino(tetrimino);

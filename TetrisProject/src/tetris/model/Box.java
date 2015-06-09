@@ -2,7 +2,7 @@ package tetris.model;
 
 /**
  * Class that represents the boxes into the game grid.
- * @author Sedara
+ * @author Numa
  *
  */
 public class Box {

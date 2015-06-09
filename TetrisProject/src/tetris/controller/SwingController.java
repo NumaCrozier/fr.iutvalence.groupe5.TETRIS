@@ -1,14 +1,21 @@
 package tetris.controller;
 
+
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
 import javax.swing.SwingUtilities;
 
+import tetris.model.Box;
 import tetris.model.Game;
+import tetris.model.Location;
+import tetris.model.Tetriminos;
 import tetris.model.Types;
 import tetris.view.Display;
+import tetris.view.containers.Board;
 
 /**
  * Class that redefines the methods required by the Controller interface. It is implemented from the Controller interface.
@@ -16,18 +23,18 @@ import tetris.view.Display;
  *
  */
 public class SwingController implements Controller{
-	
-	
+
+
 	private Game game;
-	
+
 	private Display display;
-	
+
 	private ConfigManager config;
-	
+
 	private Locale locale;
-	
+
 	private ResourceBundle bundle;
-	
+
 	/**
 	 * Method that allows to monitor the swing window.
 	 */
@@ -40,16 +47,16 @@ public class SwingController implements Controller{
 		locale = new Locale(lang.toLowerCase(), lang.toUpperCase());
 		bundle = ResourceBundle.getBundle("TetrisLang", locale);
 	}
-	
-	
+
+
 	public void createNewGame(){
 		game = new Game();
 	}
-	
+
 	public String getString(String key){
 		return bundle.getString(key);
 	}
-	
+
 	public void setLanguage(String lang) {
 		locale = new Locale(lang.toLowerCase(), lang.toUpperCase());
 		bundle = ResourceBundle.getBundle("TetrisLang", locale);
@@ -59,9 +66,9 @@ public class SwingController implements Controller{
 	public void startDisplay() {
 		display = new Display(this);
 		SwingUtilities.invokeLater(display);
-		
+
 	}
-	
+
 	/**
 	 * Method returning the board dimensions (speaking in Boxes), into an int grid.
 	 * @return int[]
@@ -72,7 +79,7 @@ public class SwingController implements Controller{
 		int dim[] = {i,j};
 		return dim;
 	}
-	
+
 	/**
 	 * Method that returns the type of a grid by giving it the row and the column.
 	 * @param row
@@ -81,56 +88,108 @@ public class SwingController implements Controller{
 	 */
 	public Types getTypeFromBox(int row, int col){
 		try{
-		return game.getBoard().getBox(row, col).getTetrimino().getType();
+			return game.getBoard().getBox(row, col).getTetrimino().getType();
 		}catch(NullPointerException e){return null;}
 	}
 
 
 	@Override
-	public void refreshDisplay() {
+	public void refreshDisplay() 
+	{
 		display.refreshGame();
-		
-		
+
+
 	}
 
 
 	@Override
-	public void rotateTetrimino() {
-		// TODO Auto-generated method stub
-		
+	public void rotateTetrimino() 
+	{
+
+
+
 	}
 
 
 	@Override
-	public void moveTetriminoForward() {
-		// TODO Auto-generated method stub
-		
+	public void moveTetriminoForward() 
+	{
+		try
+		{
+		List<Box> oldBoxesList = new ArrayList<Box>();
+		List<Box> newBoxesList = new ArrayList<Box>();
+		for(int counter = 0 ; counter < 4 ; counter++)
+		{
+			oldBoxesList.add(this.game.getBoard().getPlayedBoxes().get(counter));
+			this.game.getBoard().setTetrimino(null);
+			newBoxesList.add(new Box(new Location(oldBoxesList.get(counter).getBoxLocation().getRow()+1, oldBoxesList.get(counter).getBoxLocation().getColumn())));
+			this.game.getBoard().setTetrimino(new Tetriminos(oldBoxesList.get(counter).getTetrimino().getType(), newBoxesList.get(counter).getBoxLocation()));
+		}
+		}
+		catch (ArrayIndexOutOfBoundsException e)
+		{
+			return;
+		}
+
 	}
 
 
 	@Override
-	public void moveTetriminoRight() {
-		// TODO Auto-generated method stub
-		
+	public void moveTetriminoRight() 
+	{
+		try 
+		{
+			List<Box> oldBoxesList = new ArrayList<Box>();
+			List<Box> newBoxesList = new ArrayList<Box>();
+			for(int counter = 0 ; counter < 4 ; counter++)
+			{
+				oldBoxesList.add(this.game.getBoard().getPlayedBoxes().get(counter));
+				this.game.getBoard().setTetrimino(null);
+				newBoxesList.add(new Box(new Location(oldBoxesList.get(counter).getBoxLocation().getRow(), oldBoxesList.get(counter).getBoxLocation().getColumn()+1)));
+				this.game.getBoard().setTetrimino(new Tetriminos(oldBoxesList.get(counter).getTetrimino().getType(), newBoxesList.get(counter).getBoxLocation()));
+			}
+		} 
+		catch (ArrayIndexOutOfBoundsException e) 
+		{
+			return;
+		}
+
+	}
+
+
+
+	@Override
+	public void moveTetriminoLeft() 
+	{
+		try
+		{
+		List<Box> oldBoxesList = new ArrayList<Box>();
+		List<Box> newBoxesList = new ArrayList<Box>();
+		for(int counter = 0 ; counter < 4 ; counter++)
+		{
+			oldBoxesList.add(this.game.getBoard().getPlayedBoxes().get(counter));
+			this.game.getBoard().setTetrimino(null);
+			newBoxesList.add(new Box(new Location(oldBoxesList.get(counter).getBoxLocation().getRow(), oldBoxesList.get(counter).getBoxLocation().getColumn()-1)));
+			this.game.getBoard().setTetrimino(new Tetriminos(oldBoxesList.get(counter).getTetrimino().getType(), newBoxesList.get(counter).getBoxLocation()));
+		}
+		}
+		catch (ArrayIndexOutOfBoundsException e)
+		{
+			return;
+		}
 	}
 
 
 	@Override
-	public void moveTetriminoLeft() {
+	public void pause() 
+	{
 		// TODO Auto-generated method stub
-		
+
 	}
 
-
-	@Override
-	public void pause() {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	public ConfigManager getConfig() {
+	public ConfigManager getConfig() 
+	{
 		return config;
 	}
-	
 
 }

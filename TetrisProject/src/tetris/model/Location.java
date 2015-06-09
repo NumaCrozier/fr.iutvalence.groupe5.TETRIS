@@ -2,7 +2,7 @@ package tetris.model;
 
 /**
  * Class that represents the locations of the boxes.
- * @author Sedara
+ * @author Numa
  *
  */
 public class Location {

@@ -38,7 +38,8 @@ public class ConsoleController implements Controller{
 	}
 
 	@Override
-	public void refreshDisplay() {
+	public void refreshDisplay()
+	{
 		// TODO Auto-generated method stub
 		
 	}
