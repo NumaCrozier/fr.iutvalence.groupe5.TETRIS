@@ -86,7 +86,8 @@ public class Game {
 
 	public void moveTetriminoRight()
 	{
-		try{
+		try
+		{
 			List<Box> oldBoxesList = new ArrayList<Box>();
 			for(int counter = 0 ; counter < 4 ; counter++)
 			{
@@ -117,13 +118,43 @@ public class Game {
 			return;
 		}
 	}
-	
+
+	public void rotateTetrimino() throws IOException{
+
+		ArrayList<Box> temporaryList = new ArrayList<Box>();
+
+		Location originalLocation = this.board.getPlayedBoxes().get(0).getBoxLocation();
+		Location newLocation;
+		int x;
+		int y;
+		temporaryList.add(this.board.getPlayedBoxes().get(o));
+
+		for(int counter = 0 ; counter < 4 ; counter++)
+		{
+			try
+			{
+				newLocation = this.getBoard().getPlayedBoxes().get(counter).getBoxLocation();
+				x = newLocation.getRow()-originalLocation.getRow();
+				y = newLocation.getColumn()-originalLocation.getColumn();
+				temporaryList.add(board.getBox(originalLocation.getRow()+y, originalLocation.getColumn()-x));
+				if(temporaryList.get(counter).getTetrimino().getType()!= null)
+					return;
+			}
+			catch{ArrayIndexOutOfBoundsException e)
+			{
+				return;
+			}
+			}
+			for(int counter = 0; counter < 4; counter++)
+			{
+			
+			}
+		}
+	}
+
+
 	private boolean forward()
 	{
-
-
-
-
 		return true;
 	}
 
