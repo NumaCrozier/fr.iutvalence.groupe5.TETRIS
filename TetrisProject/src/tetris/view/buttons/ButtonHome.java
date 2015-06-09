@@ -23,6 +23,7 @@ public class ButtonHome extends TetrisButton implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		display.getController().stopMusic();
 		display.getFrame().setContentPane(display.getHomeMenu());
 		display.setKeyListener(null);
 		display.getFrame().revalidate();

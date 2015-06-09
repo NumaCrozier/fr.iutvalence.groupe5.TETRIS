@@ -38,6 +38,8 @@ public class SwingController implements Controller{
 	private Locale locale;
 
 	private ResourceBundle bundle;
+	
+	private Clip music;
 
 	/**
 	 * Method that allows to monitor the swing window.
@@ -50,7 +52,6 @@ public class SwingController implements Controller{
 		} catch (IOException e) {}
 		locale = new Locale(lang.toLowerCase(), lang.toUpperCase());
 		bundle = ResourceBundle.getBundle("TetrisLang", locale);
-		this.playMusic();
 	}
 
 	/**
@@ -59,14 +60,18 @@ public class SwingController implements Controller{
 	public void playMusic() {
 	    try {
 	        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("musics/tetris_themeA_loop.wav").getAbsoluteFile());
-	        Clip clip = AudioSystem.getClip();
-	        clip.open(audioInputStream);
-	        clip.start();
-	        clip.loop(clip.LOOP_CONTINUOUSLY);
+	        this.music = AudioSystem.getClip();
+	        music.open(audioInputStream);
+	        music.start();
+	        music.loop(music.LOOP_CONTINUOUSLY);
 	    } catch(Exception ex) {
 	        System.out.println("Error with playing sound.");
 	        ex.printStackTrace();
 	    }
+	}
+	
+	public void stopMusic() {
+		music.close();
 	}
 	
 	public void horizontalSoundEffect() {
