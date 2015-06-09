@@ -83,7 +83,7 @@ public class SwingController implements Controller{
 
 	public void verticalSoundEffect() {
 	    try {
-	        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("musics/verticalSoundEffect.wav").getAbsoluteFile());
+	        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("musics/verticalSoundEffect2.wav").getAbsoluteFile());
 	        Clip clip = AudioSystem.getClip();
 	        clip.open(audioInputStream);
 	        clip.start();
