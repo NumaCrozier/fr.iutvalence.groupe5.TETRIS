@@ -24,7 +24,7 @@ public class FrameChooseColor extends JFrame implements WindowListener{
 	
 	private Display display;
 
-	public FrameChooseColor(Display display, Board copiedBoard, Board currentBoard, Types type) {
+	public FrameChooseColor(final Display display, final Board copiedBoard, Board currentBoard, Types type) {
 		this.display = display;
 		copiedBoard.setTetrimino(type, 3, 2);
 		final JColorChooser chooser = new JColorChooser();
@@ -33,7 +33,7 @@ public class FrameChooseColor extends JFrame implements WindowListener{
 		JSplitPane jSplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		jSplitPane.setDividerSize(0);
 		jp.add(copiedBoard);
-		ButtonApplyColor applyColor = new ButtonApplyColor(display, type, null, this, currentBoard);
+		final ButtonApplyColor applyColor = new ButtonApplyColor(display, type, null, this, currentBoard);
 		jSplitPane.add(applyColor);
 		jSplitPane.add(new ButtonCancel(display, this));
 		jp.add(jSplitPane);
