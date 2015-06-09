@@ -1,12 +1,16 @@
 package tetris.controller;
 
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.SwingUtilities;
 
 import tetris.model.Box;
@@ -46,9 +50,26 @@ public class SwingController implements Controller{
 		} catch (IOException e) {}
 		locale = new Locale(lang.toLowerCase(), lang.toUpperCase());
 		bundle = ResourceBundle.getBundle("TetrisLang", locale);
+		this.playSound();
 	}
 
-
+	/**
+	 * Method that allows to launch the music
+	 */
+	public void playSound() {
+	    try {
+	        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("musics/tetris_themeA_loop.wav").getAbsoluteFile());
+	        Clip clip = AudioSystem.getClip();
+	        clip.open(audioInputStream);
+	        clip.start();
+	        clip.loop(
+	        clip.LOOP_CONTINUOUSLY);
+	    } catch(Exception ex) {
+	        System.out.println("Error with playing sound.");
+	        ex.printStackTrace();
+	    }
+	}
+	
 	public void createNewGame(){
 		game = new Game();
 	}
