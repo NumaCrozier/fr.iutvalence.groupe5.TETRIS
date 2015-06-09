@@ -14,6 +14,10 @@ import javax.swing.SwingConstants;
 import tetris.controller.ConfigManager;
 import tetris.view.containers.LabelControl;
 
+/**
+ * @author Sedara
+ *
+ */
 public class FrameControl extends JFrame implements KeyListener, WindowListener{
 
 	private static final long serialVersionUID = 1L;
