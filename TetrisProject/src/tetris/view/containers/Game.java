@@ -90,7 +90,9 @@ public class Game extends JSplitPane{
 					"<br> Tetris : " + tetris +
 					"<br><br><br><br>" + display.getController().getString("setpause1") + " [" + 
 					KeyEvent.getKeyText(Integer.parseInt(display.getController().getConfig().getDataInSection(ConfigManager.SECTION_CONTROLS, "pause"))) + "] " +
-					display.getController().getString("setpause2") +
+					display.getController().getString("setpause2") + "<br>" + " [" +
+					KeyEvent.getKeyText(Integer.parseInt(display.getController().getConfig().getDataInSection(ConfigManager.SECTION_CONTROLS, ConfigManager.CONTROL_FORWARD))) + "] " +
+					display.getController().getString("setpause3") +
 					"</html>";
 		} catch (IOException e) {}		
 		
