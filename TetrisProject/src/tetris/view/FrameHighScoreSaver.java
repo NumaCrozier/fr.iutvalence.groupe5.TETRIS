@@ -28,7 +28,16 @@ public class FrameHighScoreSaver extends JFrame{
 	public FrameHighScoreSaver(Display display, JFrame endgame, int rank) {
 		super();
 		jPanel = new JPanel();
-		label = new JLabel("<html>Vous êtes arrivé(e) à la "+(rank == 1 ? rank+"ère" : rank+"ème")+" place!<br>Si vous souhaitez enregistrer votre score, saisissez votre nom!</html>");
+		String str = null;
+		if(rank == 1)
+			str = display.getController().getString("st");
+		if(rank == 2)
+			str = display.getController().getString("nd");
+		if(rank == 3)
+			str = display.getController().getString("rd");
+		if(rank > 3)
+			str = display.getController().getString("th");
+		label = new JLabel(String.format(display.getController().getString("scoresaver"), rank, str));
 		label.setPreferredSize(new Dimension(250,50));
 		jPanel.add(label);
 		jTextField = new JTextField();
