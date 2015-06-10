@@ -48,7 +48,9 @@ public class Game extends JSplitPane{
 		infoGame = new JLabel();
 		jsp.add(infoGame);
 		jp.add(new ButtonHome(display));
-		jp.add(new ButtonMusic(display));
+		ButtonMusic buttonMusic = new ButtonMusic(display);
+		buttonMusic.setFocusable(false);
+		jp.add(buttonMusic);
 		
 		jsp.add(jp);
 		jsp.setResizeWeight(0.9);
