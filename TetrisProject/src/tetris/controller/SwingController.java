@@ -197,8 +197,7 @@ public class SwingController implements Controller{
 
 	@Override
 	public void pause(){
-		// TODO Auto-generated method stub
-
+			this.game.stopTimer();
 	}
 
 	public ConfigManager getConfig(){

@@ -19,6 +19,8 @@ public class Game {
 	
 	private Timer timer;
 	
+	private boolean timerState;
+	
 	private Controller controller;
 	
 	private int score;
@@ -77,11 +79,13 @@ public class Game {
 	public void startTimer(){
 		timer = new Timer();
 		timer.schedule(createTimer(), 0, 500);
+		this.timerState = true;
 	}
 	
 	public void stopTimer(){
 		timer.cancel();
 		timer.purge();
+		this.timerState = false;
 	}
 
 
@@ -111,6 +115,7 @@ public class Game {
 
 	public boolean moveTetrimino(String dir)
 	{
+		if(this.timerState==true){
 		List<Box> oldBoxesList = new ArrayList<Box>();
 		oldBoxesList = board.getPlayedBoxes();
 		List<Box> nextBoxes = new ArrayList<Box>();
@@ -162,43 +167,47 @@ public class Game {
 			return false;
 		}
 		
+		
 		board.move(nextBoxes);
 		
 		if(dir.equals("bottom"))
 			score++;
 		return true;
-
+		}
+		return false;
 	}
 
 	public void rotateTetrimino(){
 		
-		if(currentType != Types.O){
-			List<Box> list = board.getPlayedBoxes();
-			ArrayList<Box> tempList = new ArrayList<Box>();
-			
-			Location base = list.get(0).getBoxLocation();
-			Location location;
-			int x,y;
-			tempList.add(list.get(0));
-			for(int i=1;i<4;i++){			
-				try{
-				location = list.get(i).getBoxLocation();
-				x = location.getRow()-base.getRow();
-				y = location.getColumn()-base.getColumn();
-				tempList.add(board.getBox(base.getRow()+y,base.getColumn()-x));
-				if(tempList.get(i).getState() == States.PLACED)
-					return;
-				}catch(ArrayIndexOutOfBoundsException e){return;};
+		if(this.timerState==true){
+			if(currentType != Types.O){
+				List<Box> list = board.getPlayedBoxes();
+				ArrayList<Box> tempList = new ArrayList<Box>();
+
+				Location base = list.get(0).getBoxLocation();
+				Location location;
+				int x,y;
+				tempList.add(list.get(0));
+				for(int i=1;i<4;i++){			
+					try{
+						location = list.get(i).getBoxLocation();
+						x = location.getRow()-base.getRow();
+						y = location.getColumn()-base.getColumn();
+						tempList.add(board.getBox(base.getRow()+y,base.getColumn()-x));
+						if(tempList.get(i).getState() == States.PLACED)
+							return;
+					}catch(ArrayIndexOutOfBoundsException e){return;};
+				}
+
+				for(int i=0;i<4;i++){
+					list.get(i).removeTetrimino(States.EMPTY);
+				}
+				for(int i=0;i<4;i++){
+					tempList.get(i).setTetrimino(new Tetriminos(currentType));
+				}
+				board.move(tempList);
+
 			}
-			
-			for(int i=0;i<4;i++){
-				list.get(i).removeTetrimino(States.EMPTY);
-			}
-			for(int i=0;i<4;i++){
-				tempList.get(i).setTetrimino(new Tetriminos(currentType));
-			}
-			board.move(tempList);
-		
 		}
 
 	}

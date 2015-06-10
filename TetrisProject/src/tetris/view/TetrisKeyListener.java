@@ -43,7 +43,7 @@ public class TetrisKeyListener extends KeyAdapter{
 				}
 
 				if(e.getKeyCode() == Integer.valueOf(display.getController().getConfig().getDataInSection(ConfigManager.SECTION_CONTROLS, ConfigManager.CONTROL_PAUSE))){
-					display.getController().pause();
+							display.getController().pause();
 				}
 			}
 
