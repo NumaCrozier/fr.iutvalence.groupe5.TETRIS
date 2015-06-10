@@ -1,12 +1,14 @@
 package tetris.view;
 
 import java.awt.Color;
+import java.awt.event.KeyListener;
 import java.io.IOException;
 
 import javax.swing.JFrame;
 
 import tetris.controller.ConfigManager;
 import tetris.controller.SwingController;
+import tetris.model.Types;
 import tetris.view.containers.Game;
 import tetris.view.containers.HighScores;
 import tetris.view.containers.HomeMenu;
@@ -23,7 +25,7 @@ public class Display implements Runnable{
 	private Game game;
 	private HighScores scores;
 	private SwingController controller;
-	private TetrisKeyListener keyListener;
+	private KeyListener keyListener;
 	
 	public Display(SwingController controller) {
 		this.controller = controller;
@@ -52,6 +54,29 @@ public class Display implements Runnable{
 		}
 	}
 	
+	public void setNextTetrimino(Types type){
+		game.getNextTetrimino().resetPanel();;
+		game.getNextTetrimino().setTetrimino(type, 3, 2);
+	}
+	
+	public void endGame(){
+		FrameEndGame frameEndGame = new FrameEndGame(this);
+		String[] data;
+		int rank, score;
+		try {
+			for(String str : getController().getConfig().getDataFromEntiereSection(ConfigManager.SECTION_HIGHSCORES)){
+				data = str.split(":");
+				rank = Integer.valueOf(data[0]);
+				data = data[1].split("-");
+				score = Integer.valueOf(data[1]);
+				if(score < getController().getScore()){
+					//TODO new FrameHighScoreSaver(rank);
+					frameEndGame.setEnabled(false);
+					break;
+				}
+			}
+		} catch (NumberFormatException | IOException e) {}
+	}
 	
 	public JFrame getFrame() {
 		return frame;
@@ -77,15 +102,15 @@ public class Display implements Runnable{
 		this.scores = scores;
 	}
 	
-	public void refreshGame(){
-		game.refresh();
+	public void refreshGame(int score, int tetris){
+		game.refresh(score, tetris);
 	}
 	
 	public SwingController getController() {
 		return controller;
 	}
 	
-	public void setKeyListener(TetrisKeyListener keyListener) {
+	public void setKeyListener(KeyListener keyListener) {
 		if(this.keyListener != null)
 			frame.removeKeyListener(this.keyListener);
 		this.keyListener = keyListener;

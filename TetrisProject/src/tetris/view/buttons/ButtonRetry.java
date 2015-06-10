@@ -1,33 +1,31 @@
 package tetris.view.buttons;
 
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.JFrame;
 
 import tetris.view.Display;
 import tetris.view.TetrisKeyListener;
 import tetris.view.containers.Game;
 
-/**
- * @author Sedara
- *
- */
-public class ButtonPlay extends TetrisButton implements ActionListener{
-	
-	
-	/**
-	 * 
-	 */
+public class ButtonRetry extends TetrisButton implements ActionListener{
+	 
 	private static final long serialVersionUID = 1L;
 	
-	public ButtonPlay(Display display) {
-		super(display, "play");
-		addActionListener(this);
-		setPreferredSize(new Dimension(300, 100));
+	private JFrame frame;
+
+	public ButtonRetry(Display display, JFrame endGameFrame){
+		super(display, "retry");
+		frame = endGameFrame;
+		this.addActionListener(this);
 	}
-	
-	@Override
+
 	public void actionPerformed(ActionEvent e) {
+		frame.dispose();
+		frame.setState(JFrame.EXIT_ON_CLOSE);
+		display.getFrame().setEnabled(true);
+		display.getFrame().toFront();		
 		display.setBoxesColor();
 		display.getController().createNewGame();
 		display.setGame(new Game(display));
@@ -40,6 +38,6 @@ public class ButtonPlay extends TetrisButton implements ActionListener{
 		display.getFrame().requestFocusInWindow();
 		display.getController().startGame();
 		//display.getController().playMusic();
-	}
 
+	}
 }

@@ -35,11 +35,11 @@ public class ControlsMenu extends JPanel{
 		controls[3] = new JLabel(display.getController().getString("forward"));
 		controls[4] = new JLabel(display.getController().getString("pause"));
 		
-		modifiers[0] = new LabelControl(display, ConfigManager.CONTROL_MOVE_LEFT, this);
-		modifiers[1] = new LabelControl(display,  ConfigManager.CONTROL_MOVE_RIGHT, this);
-		modifiers[2] = new LabelControl(display,  ConfigManager.CONTROL_ROTATE, this);
-		modifiers[3] = new LabelControl(display,  ConfigManager.CONTROL_FORWARD, this);
-		modifiers[4] = new LabelControl(display,  ConfigManager.CONTROL_PAUSE, this);
+		modifiers[0] = new LabelControl(display, ConfigManager.CONTROL_MOVE_LEFT);
+		modifiers[1] = new LabelControl(display,  ConfigManager.CONTROL_MOVE_RIGHT);
+		modifiers[2] = new LabelControl(display,  ConfigManager.CONTROL_ROTATE);
+		modifiers[3] = new LabelControl(display,  ConfigManager.CONTROL_FORWARD);
+		modifiers[4] = new LabelControl(display,  ConfigManager.CONTROL_PAUSE);
 		
 		JLabel com = new JLabel(display.getController().getString("command"));
 		JLabel key = new JLabel(display.getController().getString("key"));

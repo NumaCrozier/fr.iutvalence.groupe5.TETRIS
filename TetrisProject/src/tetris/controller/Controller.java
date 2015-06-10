@@ -37,5 +37,9 @@ public interface Controller {
 	public void moveTetriminoLeft();
 	
 	public void pause();
+	
+	public void startGame();
+	
+	public void notifyWin();
 
 }

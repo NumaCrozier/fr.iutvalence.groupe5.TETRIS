@@ -1,10 +1,12 @@
 package tetris.model;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import tetris.controller.Controller;
 
 /**
  * Class that represents the game launched in itself.
@@ -13,10 +15,24 @@ import java.util.TimerTask;
  */
 public class Game {
 
-	private Player player;
-
 	private Board board;
+	
+	private Timer timer;
+	
+	private Controller controller;
+	
+	private int score;
+	
+	private int tetris;
 
+	private Types nextType;
+	
+	private boolean lost;
+	
+	private Random random;
+	
+	private Types currentType;
+	
 
 	public Board getBoard() 
 	{
@@ -33,18 +49,39 @@ public class Game {
 	/**
 	 * Method that "starts" the game by creating its new player and its game Board.
 	 */
-	public Game()
+	public Game(Controller controller)
 	{
-		this.player = new Player();
 		this.board = new Board();
-		this.board.setTetrimino(new Tetriminos(Types.J, new Location(5, 5)));
+		this.controller = controller;
+		score = 0;
+		tetris = 0;
+		lost = false;
+		random = new Random();
+		nextType = Types.values()[random.nextInt(Types.values().length)];
+		
 	}
 
-	public boolean play(){
-		Timer timer = new Timer();
+	public void play(){
+		controller.refreshDisplay();
+		if(!board.createTetrimino(new Tetriminos(nextType), new Location(0, 5))){
+			lost = true;
+			stopTimer();
+			controller.notifyWin();
+			return;
+		}
+		currentType = nextType;
+		nextType = Types.values()[random.nextInt(Types.values().length)];
+		startTimer();
+	}
+	
+	public void startTimer(){
+		timer = new Timer();
 		timer.schedule(createTimer(), 0, 500);
-
-		return false;
+	}
+	
+	public void stopTimer(){
+		timer.cancel();
+		timer.purge();
 	}
 
 
@@ -54,119 +91,170 @@ public class Game {
 	 */
 	private TimerTask createTimer()
 	{
-		TimerTask timer = new TimerTask() 
+		TimerTask tim = new TimerTask() 
 		{
 			@Override
 			public void run() {
-				moveTetriminoForward();
+				if(!moveTetrimino("bottom")){
+					stopTimer();
+					removeLine();
+					play();				
+				}else{
+					controller.refreshDisplay();
+				}
+				
 			}
 		};
 
-		return timer;
+		return tim;
 	}
 
-	public void moveTetriminoForward()
+	public boolean moveTetrimino(String dir)
 	{
+		List<Box> oldBoxesList = new ArrayList<Box>();
+		oldBoxesList = board.getPlayedBoxes();
+		List<Box> nextBoxes = new ArrayList<Box>();
 		try{
-			List<Box> oldBoxesList = new ArrayList<Box>();
-			for(int counter = 0 ; counter < 4 ; counter++)
-			{
-				oldBoxesList.add(this.getBoard().getPlayedBoxes().get(counter));
-				this.board.setTetrimino(new Tetriminos(null, oldBoxesList.get(counter).getBoxLocation()));
-				this.board.setTetrimino(new Tetriminos(oldBoxesList.get(0).getTetrimino().getType(), this.board.getNextBox("bottom", oldBoxesList.get(counter)).getBoxLocation()));
+						
+			for(Box b : oldBoxesList){
+				nextBoxes.add(board.getNextBox(dir, b.getBoxLocation()));
+
 			}
-		}
-		catch(ArrayIndexOutOfBoundsException e)
-		{
-			return;
-		}
-
-	}
-
-	public void moveTetriminoRight()
-	{
-		try
-		{
-			List<Box> oldBoxesList = new ArrayList<Box>();
-			for(int counter = 0 ; counter < 4 ; counter++)
-			{
-				oldBoxesList.add(this.getBoard().getPlayedBoxes().get(counter));
-				this.board.setTetrimino(new Tetriminos(null, oldBoxesList.get(counter).getBoxLocation()));
-				this.board.setTetrimino(new Tetriminos(oldBoxesList.get(0).getTetrimino().getType(), this.board.getNextBox("right", oldBoxesList.get(counter)).getBoxLocation()));
+			boolean bool = false;
+			for(Box b : nextBoxes){
+				if(b.getState() == States.PLACED){
+					bool = true;
+					if(!dir.equals("bottom"))
+						return false;
+				}
+				
+				
 			}
-		}
-		catch(ArrayIndexOutOfBoundsException e)
-		{
-			return;
-		}
-	}
-
-	public void moveTetriminoLeft()
-	{
-		try{
-			List<Box> oldBoxesList = new ArrayList<Box>();
-			for(int counter = 0 ; counter < 4 ; counter++)
-			{
-				oldBoxesList.add(this.getBoard().getPlayedBoxes().get(counter));
-				this.board.setTetrimino(new Tetriminos(null, oldBoxesList.get(counter).getBoxLocation()));
-				this.board.setTetrimino(new Tetriminos(oldBoxesList.get(0).getTetrimino().getType(), this.board.getNextBox("left", oldBoxesList.get(counter)).getBoxLocation()));
-			}
-		}
-		catch(ArrayIndexOutOfBoundsException e)
-		{
-			return;
-		}
-	}
-
-	public void rotateTetrimino() throws IOException{
-
-		ArrayList<Box> temporaryList = new ArrayList<Box>();
-		ArrayList<Box> temporaryTetriminosList = new ArrayList<Box>();
-
-		Location originalLocation = this.board.getPlayedBoxes().get(0).getBoxLocation();
-		Location newLocation;
-		int x;
-		int y;
-		temporaryList.add(this.board.getPlayedBoxes().get(0));
-
-		for(int counter = 0 ; counter < 4 ; counter++)
-		{
-			try
-			{
-				newLocation = this.getBoard().getPlayedBoxes().get(counter).getBoxLocation();
-				x = newLocation.getRow()-originalLocation.getRow();
-				y = newLocation.getColumn()-originalLocation.getColumn();
-				temporaryList.add(board.getBox(originalLocation.getRow()+y, originalLocation.getColumn()-x));
-				if(temporaryList.get(counter).getTetrimino().getType()!= null && (temporaryList.get(counter).getState() != States.PLAYED))
-					return;
-			}
-			catch(ArrayIndexOutOfBoundsException e)
-			{
-				return;
-			}
-			}
-		
-			for(int counter = 0; counter < 4; counter++)
-			{
-			temporaryTetriminosList.add(this.board.getPlayedBoxes().get(counter));
-			this.board.getPlayedBoxes().get(counter).setTetrimino(null);
-			this.board.getPlayedBoxes().get(counter).setState(States.EMPTY);
+			if(bool){
+				for(Box b1 : oldBoxesList)
+				{
+					board.removeTetrimino(b1.getBoxLocation(), States.PLACED);
+					
+				}
+				return false;
 			}
 			
-			for(int counter = 0; counter < 4; counter++)
+			for(Box b : oldBoxesList)
 			{
+				board.removeTetrimino(b.getBoxLocation(), States.EMPTY);
 				
-				temporaryList.get(counter).setTetrimino(temporaryTetriminosList.get(counter).getTetrimino());
-				temporaryList.get(counter).setState(States.PLAYED);
+			}
+			
+			for(Box b : nextBoxes){
+				board.setTetrimino(new Tetriminos(currentType),b.getBoxLocation());
+			}
+			
+			
+		}
+		catch(ArrayIndexOutOfBoundsException e)
+		{
+			if(dir.equals("bottom")){
+				for(Box b : oldBoxesList){
+					board.removeTetrimino(b.getBoxLocation(), States.PLACED);
+
+				}
+			}
+			return false;
+		}
+		
+		board.move(nextBoxes);
+		
+		if(dir.equals("bottom"))
+			score++;
+		return true;
+
+	}
+
+	public void rotateTetrimino(){
+		
+		if(currentType != Types.O){
+			List<Box> list = board.getPlayedBoxes();
+			ArrayList<Box> tempList = new ArrayList<Box>();
+			
+			Location base = list.get(0).getBoxLocation();
+			Location location;
+			int x,y;
+			tempList.add(list.get(0));
+			for(int i=1;i<4;i++){			
+				try{
+				location = list.get(i).getBoxLocation();
+				x = location.getRow()-base.getRow();
+				y = location.getColumn()-base.getColumn();
+				tempList.add(board.getBox(base.getRow()+y,base.getColumn()-x));
+				if(tempList.get(i).getState() == States.PLACED)
+					return;
+				}catch(ArrayIndexOutOfBoundsException e){return;};
+			}
+			
+			for(int i=0;i<4;i++){
+				list.get(i).removeTetrimino(States.EMPTY);
+			}
+			for(int i=0;i<4;i++){
+				tempList.get(i).setTetrimino(new Tetriminos(currentType));
+			}
+			board.move(tempList);
+		
+		}
+
+	}
+	
+	public void removeLine(){
+	    boolean b;
+	    int n = 0;
+		for(int i=0;i<board.getRows();i++){
+			b = true;
+			for(int j=0;j<board.getColumns();j++){
+				if(board.getBox(i, j).getState() == States.EMPTY){
+					b = false;
+					break;
+				}
+			}
+			if(b){
+				n++;
+				for(int j=0;j<board.getColumns();j++){
+					board.getBox(i, j).removeTetrimino(States.EMPTY);
+				}
+				
+				for(int k=board.getColumns()-1;k>-1;k--){
+					
+					for(int j=i-1;j>-1;j--){
+						try{
+						board.getNextBox("bottom", new Location(j, k)).setTetrimino(board.getBox(j,k).getTetrimino(),board.getBox(j,k).getState());
+						}catch(ArrayIndexOutOfBoundsException e){};
+					}
+					
+				}
+				
 			}
 
 		}
+		if(n > 0)
+			score += (((50*n*n*n) - (300*n*n) + (1150*n) - 600))/3;
+		if(n == 4)
+			tetris++;
+		controller.refreshDisplay();
 	
-
-	private boolean forward()
-	{
-		return true;
 	}
-
-
+	
+	public int getScore() {
+		return score;
+	}
+	
+	public int getTetris() {
+		return tetris;
+	}
+	
+	public Types getNextType() {
+		return nextType;
+	}
+	
+	public boolean isLost(){
+		return lost;
+	}
+	
 }

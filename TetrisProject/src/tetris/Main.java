@@ -24,8 +24,6 @@ public class Main
 		
 		controller = new SwingController(config);
 
-		
-		controller.createNewGame();
 		controller.startDisplay();
 		
 		

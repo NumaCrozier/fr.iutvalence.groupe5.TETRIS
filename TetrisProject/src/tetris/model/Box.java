@@ -21,7 +21,6 @@ public class Box {
 		this.boxLocation=position;
 		this.state=States.EMPTY;
 		this.tetrimino = null;
-	//	this.setTetrimino(new Tetriminos(Types.NONE,new Position(0,0)));
 	}
 
 
@@ -52,6 +51,12 @@ public class Box {
 		this.tetrimino = tetrimino;
 		this.state = States.PLAYED;  //TODO : Remettre PLACED � la place de PLAYED
 	}
+	
+	public void setTetrimino(Tetriminos tetrimino, States state) 
+	{
+		this.tetrimino = tetrimino;
+		this.state = state;  //TODO : Remettre PLACED � la place de PLAYED
+	}
 
 	/**
 	 * Method allowing to modify the state of a Box.
@@ -69,6 +74,12 @@ public class Box {
 	public States getState()
 	{
 		return this.state;
+	}
+	
+	public void removeTetrimino(States state){
+		if(state == States.EMPTY)
+			tetrimino = null;
+		this.state = state;  //TODO : Remettre PLACED � la place de PLAYED
 	}
 	
 	@Override

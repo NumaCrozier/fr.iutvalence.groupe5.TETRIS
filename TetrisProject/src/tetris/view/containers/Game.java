@@ -71,8 +71,9 @@ public class Game extends JSplitPane{
 	/**
 	 * Call to the method used to refresh the board on the Swing interface.
 	 */
-	public void refresh(){
+	public void refresh(int score, int tetris){
 		board.refreshGamingPanel();
+		setInfoText(score, tetris);
 	}
 	
 	public Board getNextTetrimino() {

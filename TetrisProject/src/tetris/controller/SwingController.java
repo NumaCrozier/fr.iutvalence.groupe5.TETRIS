@@ -3,8 +3,6 @@ package tetris.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -13,13 +11,9 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.SwingUtilities;
 
-import tetris.model.Box;
 import tetris.model.Game;
-import tetris.model.Location;
-import tetris.model.Tetriminos;
 import tetris.model.Types;
 import tetris.view.Display;
-import tetris.view.containers.Board;
 
 /**
  * Class that redefines the methods required by the Controller interface. It is implemented from the Controller interface.
@@ -52,6 +46,7 @@ public class SwingController implements Controller{
 		} catch (IOException e) {}
 		locale = new Locale(lang.toLowerCase(), lang.toUpperCase());
 		bundle = ResourceBundle.getBundle("TetrisLang", locale);
+		game = null;
 	}
 
 	/**
@@ -63,10 +58,8 @@ public class SwingController implements Controller{
 	        this.music = AudioSystem.getClip();
 	        music.open(audioInputStream);
 	        music.start();
-	        music.loop(music.LOOP_CONTINUOUSLY);
+	        music.loop(Clip.LOOP_CONTINUOUSLY);
 	    } catch(Exception ex) {
-	        System.out.println("Error with playing sound.");
-	        ex.printStackTrace();
 	    }
 	}
 	
@@ -81,8 +74,6 @@ public class SwingController implements Controller{
 	        clip.open(audioInputStream);
 	        clip.start();
 	    } catch(Exception ex) {
-	        System.out.println("Error with playing sound.");
-	        ex.printStackTrace();
 	    }
 	}
 
@@ -93,8 +84,6 @@ public class SwingController implements Controller{
 	        clip.open(audioInputStream);
 	        clip.start();
 	    } catch(Exception ex) {
-	        System.out.println("Error with playing sound.");
-	        ex.printStackTrace();
 	    }
 	}
 	
@@ -105,13 +94,23 @@ public class SwingController implements Controller{
 	        clip.open(audioInputStream);
 	        clip.start();
 	    } catch(Exception ex) {
-	        System.out.println("Error with playing sound.");
-	        ex.printStackTrace();
 	    }
 	}
 	
 	public void createNewGame(){
-		game = new Game();
+		game = new Game(this);
+	}
+	
+	public void stopGame(){
+		if(game != null){
+			game.stopTimer();
+			game = null;
+		}
+	}
+	
+	public void restartTimer(){
+		game.stopTimer();
+		game.startTimer();
 	}
 
 	public String getString(String key){
@@ -152,57 +151,75 @@ public class SwingController implements Controller{
 			return game.getBoard().getBox(row, col).getTetrimino().getType();
 		}catch(NullPointerException e){return null;}
 	}
+	
+	public int getScore(){
+		return game.getScore();
+	}
+	
+	public int getTetris(){
+		return game.getTetris();
+	}
 
 
 	@Override
-	public void refreshDisplay() 
-	{
-		display.refreshGame();
+	public void refreshDisplay(){
+		display.refreshGame(getScore(), getTetris());
+		display.setNextTetrimino(game.getNextType());
+	}
 
+
+	@Override
+	public void rotateTetrimino(){
+		game.rotateTetrimino();
+		refreshDisplay();
+	}
+
+
+	@Override
+	public void moveTetriminoForward(){		
 
 	}
 
 
 	@Override
-	public void rotateTetrimino() 
-	{
-
-	}
-
-
-	@Override
-	public void moveTetriminoForward() 
-	{
-		
-		game.moveTetriminoForward();
-	}
-
-
-	@Override
-	public void moveTetriminoRight() 
-	{
-		game.moveTetriminoRight();
+	public void moveTetriminoRight(){
+		game.moveTetrimino("right");
+		refreshDisplay();
 	}
 
 
 
 	@Override
-	public void moveTetriminoLeft() 
-	{
-		game.moveTetriminoLeft();
+	public void moveTetriminoLeft(){
+		game.moveTetrimino("left");
+		refreshDisplay();
 	}
 
 
 	@Override
-	public void pause() 
-	{
+	public void pause(){
 		// TODO Auto-generated method stub
 
 	}
 
-	public ConfigManager getConfig() 
-	{
+	public ConfigManager getConfig(){
 		return config;
+	}
+
+	@Override
+	public void startGame(){
+		game.play();
+		
+	}
+	
+	public boolean isLost(){
+		return game.isLost();
+	}
+
+	@Override
+	public void notifyWin() {
+		display.endGame();
+		
 	}
 
 }

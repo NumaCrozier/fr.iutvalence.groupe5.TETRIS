@@ -23,26 +23,28 @@ public class TetrisKeyListener extends KeyAdapter{
 	@Override
 	public void keyPressed(KeyEvent e) {
 		try {
-			
-			if(e.getKeyCode() == Integer.valueOf(display.getController().getConfig().getDataInSection(ConfigManager.SECTION_CONTROLS, ConfigManager.CONTROL_FORWARD))){
-				display.getController().moveTetriminoForward();
-			}
-			if(e.getKeyCode() == Integer.valueOf(display.getController().getConfig().getDataInSection(ConfigManager.SECTION_CONTROLS, ConfigManager.CONTROL_ROTATE))){
-				display.getController().rotateTetrimino();
+			if(!display.getController().isLost()){
+				if(e.getKeyCode() == Integer.valueOf(display.getController().getConfig().getDataInSection(ConfigManager.SECTION_CONTROLS, ConfigManager.CONTROL_FORWARD))){
+					display.getController().restartTimer();
+				}
+				if(e.getKeyCode() == Integer.valueOf(display.getController().getConfig().getDataInSection(ConfigManager.SECTION_CONTROLS, ConfigManager.CONTROL_ROTATE))){
+					display.getController().rotateTetrimino();
+				}
+
+				if(e.getKeyCode() == Integer.valueOf(display.getController().getConfig().getDataInSection(ConfigManager.SECTION_CONTROLS, ConfigManager.CONTROL_MOVE_RIGHT))){
+					display.getController().moveTetriminoRight();
+				}
+
+				if(e.getKeyCode() == Integer.valueOf(display.getController().getConfig().getDataInSection(ConfigManager.SECTION_CONTROLS, ConfigManager.CONTROL_MOVE_LEFT))){
+					display.getController().moveTetriminoLeft();
+				}
+
+				if(e.getKeyCode() == Integer.valueOf(display.getController().getConfig().getDataInSection(ConfigManager.SECTION_CONTROLS, ConfigManager.CONTROL_PAUSE))){
+					display.getController().pause();
+				}
 			}
 
-			if(e.getKeyCode() == Integer.valueOf(display.getController().getConfig().getDataInSection(ConfigManager.SECTION_CONTROLS, ConfigManager.CONTROL_MOVE_RIGHT))){
-				display.getController().moveTetriminoRight();
-			}
 			
-			if(e.getKeyCode() == Integer.valueOf(display.getController().getConfig().getDataInSection(ConfigManager.SECTION_CONTROLS, ConfigManager.CONTROL_MOVE_LEFT))){
-				display.getController().moveTetriminoLeft();
-			}
-			
-			if(e.getKeyCode() == Integer.valueOf(display.getController().getConfig().getDataInSection(ConfigManager.SECTION_CONTROLS, ConfigManager.CONTROL_PAUSE))){
-				display.getController().pause();
-			}
-
 		} catch (NumberFormatException | IOException e1) {}
 	}
 

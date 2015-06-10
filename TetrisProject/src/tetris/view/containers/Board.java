@@ -70,6 +70,14 @@ public class Board extends JPanel implements MouseListener{
 			currentTetriomino[i].setColor(color);
 		}
 	}
+	
+	public void resetPanel(){
+		for(int i=0;i<rows;i++){
+			for(int j=0;j<columns;j++){
+				boxes[i][j].setColor(BoxesColors.EMPTY.getColor());
+			}
+		}
+	}
 		
 	public void setTetrimino(Types type, int row, int col) 
 	{	

@@ -22,14 +22,12 @@ public class LabelControl extends JLabel implements MouseListener{
 	private static final long serialVersionUID = 1L;
 	private String key;
 	private Display display;
-	private ControlsMenu controlsPanel;
 	
 	
-	public LabelControl(Display display, String key, ControlsMenu controlsPanel) throws NumberFormatException, IOException {
+	public LabelControl(Display display, String key) throws NumberFormatException, IOException {
 		super(KeyEvent.getKeyText(Integer.valueOf(display.getController().getConfig().getDataInSection(ConfigManager.SECTION_CONTROLS, key))));
 		this.display = display;
-		this.key = key;	
-		this.controlsPanel = controlsPanel;
+		this.key = key;
 		addMouseListener(this);
 	}
 	
@@ -50,7 +48,7 @@ public class LabelControl extends JLabel implements MouseListener{
 		
 		
 		
-		FrameControl jf = new FrameControl(display, key, usedCodes, this);
+		new FrameControl(display, key, usedCodes, this);
 		
 		display.getFrame().setEnabled(false);
 		

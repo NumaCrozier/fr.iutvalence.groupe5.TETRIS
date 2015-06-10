@@ -19,7 +19,7 @@ public class ConsoleController implements Controller{
 
 	@Override
 	public void createNewGame() {
-		game = new Game();
+		game = new Game(this);
 		
 	}
 
@@ -62,6 +62,18 @@ public class ConsoleController implements Controller{
 
 	@Override
 	public void pause() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void startGame() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void notifyWin() {
 		// TODO Auto-generated method stub
 		
 	}
