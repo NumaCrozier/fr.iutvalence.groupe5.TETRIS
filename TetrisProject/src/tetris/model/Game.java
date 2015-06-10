@@ -238,7 +238,6 @@ public class Game {
 		if(n == 4)
 			tetris++;
 		controller.refreshDisplay();
-	
 	}
 	
 	public int getScore() {

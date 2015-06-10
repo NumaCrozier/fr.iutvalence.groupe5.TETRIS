@@ -79,7 +79,7 @@ public class SwingController implements Controller{
 
 	public void verticalSoundEffect() {
 	    try {
-	        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("musics/verticalSoundEffect2.wav").getAbsoluteFile());
+	        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("soundEffects/verticalSoundEffect2.wav").getAbsoluteFile());
 	        Clip clip = AudioSystem.getClip();
 	        clip.open(audioInputStream);
 	        clip.start();
@@ -89,7 +89,7 @@ public class SwingController implements Controller{
 	
 	public void tetrisSoundEffect() {
 	    try {
-	        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("musics/tetrisSoundEffect.wav").getAbsoluteFile());
+	        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("soundEffects/tetrisSoundEffect.wav").getAbsoluteFile());
 	        Clip clip = AudioSystem.getClip();
 	        clip.open(audioInputStream);
 	        clip.start();
@@ -166,8 +166,7 @@ public class SwingController implements Controller{
 		display.refreshGame(getScore(), getTetris());
 		display.setNextTetrimino(game.getNextType());
 	}
-
-
+	
 	@Override
 	public void rotateTetrimino(){
 		game.rotateTetrimino();

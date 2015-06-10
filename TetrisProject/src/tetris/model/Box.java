@@ -14,7 +14,7 @@ public class Box {
 	private Tetriminos tetrimino;
 
 	/**
-	 * Constructor parametered for Box class.
+	 * Constructor parameterized for Box class.
 	 * @param position
 	 */
 	public Box(Location position) {

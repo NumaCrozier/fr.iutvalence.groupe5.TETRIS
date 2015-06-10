@@ -22,7 +22,7 @@ public class ConsoleController implements Controller{
 		game = new Game(this);
 		
 	}
-
+	
 	@Override
 	public void startDisplay() {
 		System.out.println(game.getBoard().toString());
