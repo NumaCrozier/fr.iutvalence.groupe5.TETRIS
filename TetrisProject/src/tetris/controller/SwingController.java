@@ -64,7 +64,7 @@ public class SwingController implements Controller{
 	}
 	
 	public void stopMusic() {
-		music.close();
+		music.stop();
 	}
 	
 	public void horizontalSoundEffect() {

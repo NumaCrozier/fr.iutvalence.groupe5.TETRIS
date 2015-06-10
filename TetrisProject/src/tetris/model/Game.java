@@ -218,6 +218,7 @@ public class Game {
 				n++;
 				for(int j=0;j<board.getColumns();j++){
 					board.getBox(i, j).removeTetrimino(States.EMPTY);
+					controller.tetrisSoundEffect();
 				}
 				
 				for(int k=board.getColumns()-1;k>-1;k--){

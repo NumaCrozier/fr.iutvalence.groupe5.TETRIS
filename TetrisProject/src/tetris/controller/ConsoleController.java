@@ -78,6 +78,31 @@ public class ConsoleController implements Controller{
 		
 	}
 	
+	public void horizontalSoundEffect(){
+		// TODO Auto-generated method stub
+		
+	}
 	
+	public void verticalSoundEffect(){
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public void tetrisSoundEffect(){
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void playMusic() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void stopMusic() {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

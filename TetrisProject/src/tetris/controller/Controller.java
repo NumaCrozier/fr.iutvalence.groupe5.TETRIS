@@ -41,5 +41,15 @@ public interface Controller {
 	public void startGame();
 	
 	public void notifyWin();
+	
+	public void playMusic();
+	
+	public void stopMusic();
+	
+	public void horizontalSoundEffect();
+	
+	public void verticalSoundEffect();
+	
+	public void tetrisSoundEffect();
 
 }
