@@ -23,27 +23,24 @@ public class TetrisKeyListener extends KeyAdapter{
 	@Override
 	public void keyPressed(KeyEvent e) {
 		try {
-			if(!display.getController().isLost()){
+			if(display.getController().isListenerAllowed()){
 				if(e.getKeyCode() == Integer.valueOf(display.getController().getConfig().getDataInSection(ConfigManager.SECTION_CONTROLS, ConfigManager.CONTROL_FORWARD))){
 					display.getController().restartTimer();
 				}
 				if(e.getKeyCode() == Integer.valueOf(display.getController().getConfig().getDataInSection(ConfigManager.SECTION_CONTROLS, ConfigManager.CONTROL_ROTATE))){
 					display.getController().rotateTetrimino();
-					display.getController().verticalSoundEffect();
 				}
 
 				if(e.getKeyCode() == Integer.valueOf(display.getController().getConfig().getDataInSection(ConfigManager.SECTION_CONTROLS, ConfigManager.CONTROL_MOVE_RIGHT))){
 					display.getController().moveTetriminoRight();
-					display.getController().horizontalSoundEffect();
 				}
 
 				if(e.getKeyCode() == Integer.valueOf(display.getController().getConfig().getDataInSection(ConfigManager.SECTION_CONTROLS, ConfigManager.CONTROL_MOVE_LEFT))){
 					display.getController().moveTetriminoLeft();
-					display.getController().horizontalSoundEffect();
 				}
 
 				if(e.getKeyCode() == Integer.valueOf(display.getController().getConfig().getDataInSection(ConfigManager.SECTION_CONTROLS, ConfigManager.CONTROL_PAUSE))){
-							display.getController().pause();
+					display.getController().pause();
 				}
 			}
 

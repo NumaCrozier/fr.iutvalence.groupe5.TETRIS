@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import tetris.view.Display;
-import tetris.view.TetrisKeyListener;
 
 /**
  * @author Th3r1s

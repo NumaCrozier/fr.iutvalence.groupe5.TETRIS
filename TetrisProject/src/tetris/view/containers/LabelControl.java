@@ -32,7 +32,9 @@ public class LabelControl extends JLabel implements MouseListener{
 	}
 	
 	
-	
+	public String getKey() {
+		return key;
+	}
 	
 	public void mouseClicked(MouseEvent e) {
 		

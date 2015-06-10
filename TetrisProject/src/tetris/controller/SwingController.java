@@ -169,7 +169,8 @@ public class SwingController implements Controller{
 	
 	@Override
 	public void rotateTetrimino(){
-		game.rotateTetrimino();
+		if(game.rotateTetrimino())
+			verticalSoundEffect();
 		refreshDisplay();
 	}
 
@@ -182,7 +183,8 @@ public class SwingController implements Controller{
 
 	@Override
 	public void moveTetriminoRight(){
-		game.moveTetrimino("right");
+		if(game.moveTetrimino("right"))
+			horizontalSoundEffect();
 		refreshDisplay();
 	}
 
@@ -190,7 +192,8 @@ public class SwingController implements Controller{
 
 	@Override
 	public void moveTetriminoLeft(){
-		game.moveTetrimino("left");
+		if(game.moveTetrimino("left"))
+			horizontalSoundEffect();
 		refreshDisplay();
 	}
 
@@ -210,8 +213,8 @@ public class SwingController implements Controller{
 		
 	}
 	
-	public boolean isLost(){
-		return game.isLost();
+	public boolean isListenerAllowed(){
+		return game.isListenerAllowed();
 	}
 
 	@Override

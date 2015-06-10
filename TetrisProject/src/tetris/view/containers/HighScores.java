@@ -8,7 +8,6 @@ import java.io.IOException;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import tetris.controller.ConfigManager;
@@ -21,7 +20,7 @@ import tetris.view.buttons.ButtonHome;
  * @author Numa
  *
  */
-public class HighScores extends JPanel{
+public class HighScores extends TetrisPanel{
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -109,22 +108,23 @@ public class HighScores extends JPanel{
 		
         gbc.gridx = 1;
         gbc.gridy = 12;
-		add(new ButtonDefault(display), gbc);
+		add(new ButtonDefault(display, ConfigManager.SECTION_HIGHSCORES), gbc);
         gbc.gridx = 2;
 		add(new ButtonHome(display), gbc);
 	}
 	
 	/**
 	 * Method allowing to refresh the highscores panel.
-	 * @throws IOException
 	 */
-	public void refresh() throws IOException{
+	public void refresh(){
 		
-		String str;
+		String str = null;
 		String[] data;
 		
 		for(int i=0;i<10;i++){
-			str = display.getController().getConfig().getDataInSection(ConfigManager.SECTION_HIGHSCORES, String.valueOf(i+1));
+			try {
+				str = display.getController().getConfig().getDataInSection(ConfigManager.SECTION_HIGHSCORES, String.valueOf(i+1));
+			} catch (IOException e) {}
 			data = str.split("-");
 			tableau[i][1].setText(data[0]);
 			tableau[i][2].setText(data[1]);

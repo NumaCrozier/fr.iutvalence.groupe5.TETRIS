@@ -182,5 +182,9 @@ public class Board extends JPanel implements MouseListener{
 		this.editingColor = editingColor;
 		removeMouseListener(this);
 	}
+	
+	public Types getCurrentTypePlayed() {
+		return currentTypePlayed;
+	}
 
 }

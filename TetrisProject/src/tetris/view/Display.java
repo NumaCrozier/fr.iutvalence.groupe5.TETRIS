@@ -60,6 +60,7 @@ public class Display implements Runnable{
 	}
 	
 	public void endGame(){
+		frame.setEnabled(false);
 		FrameEndGame frameEndGame = new FrameEndGame(this);
 		String[] data;
 		int rank, score;
@@ -68,9 +69,9 @@ public class Display implements Runnable{
 				data = str.split(":");
 				rank = Integer.valueOf(data[0]);
 				data = data[1].split("-");
-				score = Integer.valueOf(data[1]);
+				score = (!data[1].equals(" ") ? Integer.valueOf(data[1]) : 0);
 				if(score < getController().getScore()){
-					//TODO new FrameHighScoreSaver(rank);
+					new FrameHighScoreSaver(this, frameEndGame, rank);
 					frameEndGame.setEnabled(false);
 					break;
 				}

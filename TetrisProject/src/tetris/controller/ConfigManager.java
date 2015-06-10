@@ -26,7 +26,7 @@ public class ConfigManager{
 	private static final String[] defaultBoxesColors = {"I:"+Integer.toString(Color.RED.getRGB()),"O:"+Integer.toString(Color.BLUE.getRGB()),"T:"+Integer.toString(Color.GRAY.getRGB()),
 														"L:"+Integer.toString(Color.MAGENTA.getRGB()),"J:"+Integer.toString(Color.WHITE.getRGB()),"Z:"+Integer.toString(Color.CYAN.getRGB()),
 														"S:"+Integer.toString(Color.GREEN.getRGB()),"EMPTY:"+Integer.toString(Color.BLACK.getRGB())};
-	private static final String[] defaultLang = {"English:en","Franï¿½ais:fr","current:en"};
+	private static final String[] defaultLang = {"English:en","Français:fr","current:en"};
 	public static final String SECTION_BOXES_COLORS = "boxescolors";
 	public static final String SECTION_CONTROLS = "controls";
 	public static final String SECTION_HIGHSCORES = "highscores";

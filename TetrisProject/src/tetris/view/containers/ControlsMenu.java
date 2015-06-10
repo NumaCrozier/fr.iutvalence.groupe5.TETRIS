@@ -4,11 +4,11 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import tetris.controller.ConfigManager;
@@ -16,14 +16,17 @@ import tetris.view.Display;
 import tetris.view.buttons.ButtonDefault;
 import tetris.view.buttons.ButtonHome;
 
-public class ControlsMenu extends JPanel{
+public class ControlsMenu extends TetrisPanel{
 	
 	private static final long serialVersionUID = 1L;
 	private static LabelControl[] modifiers = new LabelControl[5];
 	private static JLabel[] controls = new JLabel[5];
 	
+	private Display display;
+	
 	public ControlsMenu(Display display) throws IOException{
 		super();
+		this.display = display;
 		setLayout(new GridBagLayout());
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.weightx = 2;
@@ -80,10 +83,26 @@ public class ControlsMenu extends JPanel{
 		
 		gbc.gridx = 0;
 		gbc.gridy = 6;
-		add(new ButtonDefault(display), gbc);
+		add(new ButtonDefault(display, ConfigManager.SECTION_CONTROLS), gbc);
 		
 		gbc.gridx = 1;
 		add(new ButtonHome(display), gbc);
+		
+	}
+
+	@Override
+	public void refresh() {
+		controls[0].setText(display.getController().getString("left"));
+		controls[1].setText(display.getController().getString("right"));
+		controls[2].setText(display.getController().getString("rotate"));
+		controls[3].setText(display.getController().getString("forward"));
+		controls[4].setText(display.getController().getString("pause"));
+		
+		for(LabelControl l : modifiers){
+			try {
+				l.setText(KeyEvent.getKeyText(Integer.valueOf(display.getController().getConfig().getDataInSection(ConfigManager.SECTION_CONTROLS, l.getKey()))));
+			} catch (NumberFormatException | IOException e) {}
+		}
 		
 	}
 }
